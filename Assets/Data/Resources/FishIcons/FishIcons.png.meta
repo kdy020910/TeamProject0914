@@ -53,7 +53,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -106,11 +106,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PC Computer - Stardew Valley - Fishing_0
+      name: PufferfishIcon
       rect:
         serializedVersion: 2
         x: 7
@@ -341,7 +354,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC Computer - Stardew Valley - Fishing_11
+      name: TroutIcon
       rect:
         serializedVersion: 2
         x: 261
@@ -761,7 +774,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC Computer - Stardew Valley - Fishing_31
+      name: SquidIcon
       rect:
         serializedVersion: 2
         x: 121
@@ -1412,7 +1425,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC Computer - Stardew Valley - Fishing_62
+      name: ShirimpIcon
       rect:
         serializedVersion: 2
         x: 6
@@ -1748,7 +1761,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC Computer - Stardew Valley - Fishing_78
+      name: ClamIcon
       rect:
         serializedVersion: 2
         x: 92
@@ -2482,18 +2495,38 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    outline: []
+    outline:
+    - - {x: -150.81952, y: 92.8866}
+      - {x: -150.99265, y: 113.24631}
+      - {x: -128.5, y: 113}
+      - {x: -128.81952, y: 92.8866}
+    - - {x: 101.5, y: 92}
+      - {x: 101.5, y: 114}
+      - {x: 125.5, y: 114}
+      - {x: 125.5, y: 92}
+    - - {x: -39.5, y: 46}
+      - {x: -39.5, y: 69}
+      - {x: -15.5, y: 69}
+      - {x: -15.5, y: 46}
+    - - {x: -69.5, y: -49}
+      - {x: -69.5, y: -30}
+      - {x: -45.5, y: -30}
+      - {x: -45.5, y: -49}
+    - - {x: -153.5, y: -25}
+      - {x: -153.5, y: -2}
+      - {x: -132.5, y: -2}
+      - {x: -132.5, y: -25}
     physicsShape: []
     bones: []
     spriteID: c77566d4c5774a74595e0fe1bc1487fb
-    internalID: 0
+    internalID: -684959286
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PC Computer - Stardew Valley - Fishing_0: -38604050
+      ClamIcon: 1283983444
       PC Computer - Stardew Valley - Fishing_1: -1473094840
       PC Computer - Stardew Valley - Fishing_10: -514923889
       PC Computer - Stardew Valley - Fishing_100: 349608175
@@ -2506,7 +2539,6 @@ TextureImporter:
       PC Computer - Stardew Valley - Fishing_107: 1600961506
       PC Computer - Stardew Valley - Fishing_108: -2112291888
       PC Computer - Stardew Valley - Fishing_109: -2077746416
-      PC Computer - Stardew Valley - Fishing_11: 793591840
       PC Computer - Stardew Valley - Fishing_110: -724529249
       PC Computer - Stardew Valley - Fishing_111: 1475886031
       PC Computer - Stardew Valley - Fishing_112: 1076630374
@@ -2531,7 +2563,6 @@ TextureImporter:
       PC Computer - Stardew Valley - Fishing_29: 1788541702
       PC Computer - Stardew Valley - Fishing_3: -795325269
       PC Computer - Stardew Valley - Fishing_30: -1995443130
-      PC Computer - Stardew Valley - Fishing_31: -819537070
       PC Computer - Stardew Valley - Fishing_32: -976651729
       PC Computer - Stardew Valley - Fishing_33: 815304302
       PC Computer - Stardew Valley - Fishing_34: 1977505791
@@ -2565,7 +2596,6 @@ TextureImporter:
       PC Computer - Stardew Valley - Fishing_6: 559329579
       PC Computer - Stardew Valley - Fishing_60: 830166977
       PC Computer - Stardew Valley - Fishing_61: -511257188
-      PC Computer - Stardew Valley - Fishing_62: 1756658079
       PC Computer - Stardew Valley - Fishing_63: -1315210527
       PC Computer - Stardew Valley - Fishing_64: 1670496838
       PC Computer - Stardew Valley - Fishing_65: 488740101
@@ -2582,7 +2612,6 @@ TextureImporter:
       PC Computer - Stardew Valley - Fishing_75: -1140103472
       PC Computer - Stardew Valley - Fishing_76: -123933580
       PC Computer - Stardew Valley - Fishing_77: 837752866
-      PC Computer - Stardew Valley - Fishing_78: 1283983444
       PC Computer - Stardew Valley - Fishing_79: -285935932
       PC Computer - Stardew Valley - Fishing_8: -189165276
       PC Computer - Stardew Valley - Fishing_80: -1778873437
@@ -2606,6 +2635,10 @@ TextureImporter:
       PC Computer - Stardew Valley - Fishing_97: 647810358
       PC Computer - Stardew Valley - Fishing_98: 885593679
       PC Computer - Stardew Valley - Fishing_99: 1453598492
+      PufferfishIcon: -38604050
+      ShirimpIcon: 1756658079
+      SquidIcon: -819537070
+      TroutIcon: 793591840
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

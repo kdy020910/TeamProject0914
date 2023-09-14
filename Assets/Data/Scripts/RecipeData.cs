@@ -3,11 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RecipeData", menuName = "Custom/RecipeData", order = 1)]
 public class RecipeData : ScriptableObject
 {
+    [Header("레시피 데이터")]
     public string recipeName; // 레시피 이름
     [TextArea(3, 6)]
     public string recipeDescription; // 레시피 설명
     public Sprite recipeImage; // 레시피 이미지
 
+    [Header("필요한 재료")]
     public RecipeIngredient[] ingredients; //재료 목록
 }
 

@@ -30,11 +30,9 @@ public class PlayerController : AnimationSystem
     public GameObject[] slotBackgrounds; // 각 슬롯 번호에 해당하는 bg 이미지들을 배열로 저장
     public int selectedSlotNumber = -1; // 현재 선택된 슬롯 번호 초기값
 
-
     void Start()
     {
-        
-
+        IsNoneEquipped = true;
         // 모든 슬롯의 bg 이미지 비활성화
         foreach (var bg in slotBackgrounds)
         {

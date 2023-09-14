@@ -11,7 +11,7 @@ public class TDragSlot : MonoBehaviour
 
     [Header("바인딩"), Tooltip("이 스크립트가 포함된 자기자신을 참조합니다.")]
     public Image dragSlotImage;
-    
+
     private void Awake()
     {
         dragSlotImage.raycastTarget = false;
@@ -21,7 +21,7 @@ public class TDragSlot : MonoBehaviour
         {
             SetColor(0);
             if (dragSlotImage.sprite == null)
-            return;
+                return;
         }
     }
 

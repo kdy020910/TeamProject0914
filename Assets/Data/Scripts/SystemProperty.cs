@@ -138,4 +138,17 @@ public class SystemProPerty : MonoBehaviour
             return _item;
         }
     }
+    TSlot _tslot = null;
+    protected TSlot tslot
+    {
+        get
+        {
+            _tslot = FindObjectOfType<TSlot>();
+            if(_tslot == null)
+            {
+                _tslot = GetComponent<TSlot>();
+            }
+            return _tslot;
+        }
+    }
 }

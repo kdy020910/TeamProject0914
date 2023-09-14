@@ -1,5 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 // 나중에 코드 줄이기
 public class PlayerTrigger : SystemProPerty
@@ -23,15 +27,24 @@ public class PlayerTrigger : SystemProPerty
     public GameObject DiyUI;     // 작업대 상호작용
     FarmSystem farmSystem;
 
+    public GameObject toastMessageuI;
+    public Text toastMessage;
+
+    private TInventory tInventory; // TInventory 클래스의 인스턴스를 저장할 변수
+
     private void Start()
     {
-        MessageUI.SetActive(false);
+        toastMessageuI.SetActive(false);
         DiyUI.SetActive(false);
         CanFishUI.SetActive(false);
         CanRakeUI.SetActive(false);
         farmSystem = GetComponent<FarmSystem>();
         randomWoodPrefabIndex = Random.Range(0, woodPrefabs.Length); // 목재 프리팹의 랜덤 인덱스 초기화
+
+        // TInventory 클래스의 인스턴스를 찾아와 변수에 저장
+        tInventory = FindObjectOfType<TInventory>();
     }
+
     private void Update()
     {
         HandleDIyAction();
@@ -160,7 +173,8 @@ public class PlayerTrigger : SystemProPerty
         // 슬롯 안에 이미지도 사라져야함
         if (equippedWeapon.durability <= 0)
         {
-            //playerController.UnequipWeapon();
+            Debug.Log("앗" + playerController.currentEquippedWeapon + "가(이) 부러졌다!");
+            Destroy(playerController.currentEquippedWeapon.weaponPrefab);
         }
         // 내구도를 PlayerPrefs에 저장
         PlayerPrefs.SetInt("EquippedWeaponDurability", equippedWeapon.durability);
@@ -205,7 +219,6 @@ public class PlayerTrigger : SystemProPerty
 
     // 삽 Trigger 관련 코드
     private int ShovelHitCount = 0;
-
     public void OnShovelingAnimationEnd()
     {
         // 현재 장착한 무기의 내구도 확인
@@ -218,7 +231,8 @@ public class PlayerTrigger : SystemProPerty
         // 슬롯 안에 이미지도 사라져야함
         if (equippedWeapon.durability <= 0)
         {
-            //playerController.UnequipWeapon();
+            Debug.Log("앗" + playerController.currentEquippedWeapon + "가(이) 부러졌다!");
+            Destroy(playerController.currentEquippedWeapon.weaponPrefab);
         }
 
         if (IsNearObject(hitRockObject) && playerController.currentEquippedWeapon != null)
@@ -277,106 +291,99 @@ public class PlayerTrigger : SystemProPerty
         }
     }
 
-    // 낚시
-    // - 내구도 -
-    // 엉성한 낚싯대 : 10
-    // 낚싯대 : 30 
-    // 금낚싯대 : 90
-
-    // 일정시간(애니메이션 시간 시작~종료) 지난 후 랜덤 확률 적용
-    // 물고기 종류 - [ 오징어, 잉어, 복어, 조개, 새우
-    // 확률 -  0.25 오징어, 0.3 잉어,  0.05 복어, 0.25 조개, 0.15 새우
-
-    // 낚시 성공 or 실패 체크
-    // 성공 시 해당 오브젝트 인벤토리 추가 **(인벤토리 시스템 작업 완료 후 작업 가능)**
-    // 성공 시 “오브젝트 이름” 을 낚았다! 토스트 메세지 출력
-    // 실패 시 아무것도 낚지 못했다! 토스트 메세지 출력
-    // 성공 또는 실패 이후 낚시대 내구도 1 감소
-    // 낚시대 내구도 0일때, 낚시대가 부러졌다! 토스트 메세지 출력
-
-    // 낚시 관련 trigger 코드
+    // 낚시 성공 또는 실패 체크 및 데이터 추가
     public void OnFishingAnimationEnd()
     {
-        // 현재 장착한 무기의 내구도 확인
         Weapon equippedWeapon = playerController.currentEquippedWeapon;
-
-        // 내구도 감소
         equippedWeapon.durability--;
 
-        // 내구도가 0이면 무기 제거
-        if (equippedWeapon.durability <= 0)
+        if (equippedWeapon.durability == 0)
         {
-            //playerController.UnequipWeapon();
+            Destroy(playerController.currentEquippedWeapon.weaponPrefab);
+            Debug.Log("도구가 부러졌다");
             ShowToastMessage("낚시대가 부러졌다!");
             return;
         }
 
         if (pondField.isPlayerInPond && playerController.currentEquippedWeapon != null)
         {
-            // 낚시 성공 또는 실패 확률 계산
             float randomValue = Random.value;
-            float squidProbability = 0.25f;
-            float troutProbability = squidProbability + 0.3f;
-            float pufferfishProbability = troutProbability + 0.05f;
-            float clamProbability = pufferfishProbability + 0.25f;
+            float squidProbability = 0.20f;       // 오징어 확률 20%
+            float troutProbability = 0.20f;      // 잉어 확률 20%
+            float pufferfishProbability = 0.10f; // 복어 확률 10%
+            float clamProbability = 0.20f;      // 조개 확률 20%
+            float shrimpProbability = 0.30f;    // 새우 확률 30%
 
             if (randomValue <= squidProbability)
             {
-                // 오징어를 낚았을 때
+                Debug.Log("오징어를 낚았다!");
                 ShowToastMessage("오징어를 낚았다!");
-                AddToInventory("오징어"); // 인벤토리에 추가 
+                Squid squidData = ScriptableObject.CreateInstance<Squid>();
+                squidData.Initialize();
+
+                tInventory.AcquireItem(squidData, 1);
             }
-            else if (randomValue <= troutProbability)
+            else if (randomValue <= (squidProbability + troutProbability))
             {
-                // 잉어를 낚았을 때
+                Debug.Log("잉어를 낚았다!");
                 ShowToastMessage("잉어를 낚았다!");
-                AddToInventory("잉어"); // 인벤토리에 추가 
+                Trout troutData = ScriptableObject.CreateInstance<Trout>();
+                troutData.Initialize();
+
+                tInventory.AcquireItem(troutData, 1);
             }
-            else if (randomValue <= pufferfishProbability)
+            else if (randomValue <= (squidProbability + troutProbability + pufferfishProbability))
             {
-                // 복어를 낚았을 때
+                Debug.Log("복어를 낚았다!");
                 ShowToastMessage("복어를 낚았다!");
-                AddToInventory("복어"); // 인벤토리에 추가 
+                Pufferfish pufferfishData = ScriptableObject.CreateInstance<Pufferfish>();
+                pufferfishData.Initialize();
+
+                tInventory.AcquireItem(pufferfishData, 1);
             }
-            else if (randomValue <= clamProbability)
+            else if (randomValue <= (squidProbability + troutProbability + pufferfishProbability + clamProbability))
             {
-                // 조개를 낚았을 때
+                Debug.Log("조개를 낚았다!");
                 ShowToastMessage("조개를 낚았다!");
-                AddToInventory("조개"); // 인벤토리에 추가 
+                Clam clamData = ScriptableObject.CreateInstance<Clam>();
+                clamData.Initialize();
+
+                tInventory.AcquireItem(clamData, 1);
+            }
+            else if (randomValue <= (squidProbability + troutProbability + pufferfishProbability + clamProbability + shrimpProbability))
+            {
+                // 새우를 낚았을 때의 처리
+                Debug.Log("새우를 낚았다!");
+                ShowToastMessage("새우를 낚았다!");
+                Shirimp shrimpData = ScriptableObject.CreateInstance<Shirimp>();
+                shrimpData.Initialize();
+
+                tInventory.AcquireItem(shrimpData, 1);
             }
             else
             {
-                // 낚지 못했을 때 (실패)
+                // 아무것도 낚지 못했을 때의 처리
+                Debug.Log("아무것도 낚지 못했다!");
                 ShowToastMessage("아무것도 낚지 못했다!");
             }
-
-
         }
     }
-    public GameObject MessageUI; // 메세지 ui
-    void ShowToastMessage(string message)
+
+    // 토스트 메시지 표시
+    private void ShowToastMessage(string message)
     {
-        MessageUI.SetActive(true);
+        toastMessageuI.SetActive(true);
+        toastMessage.text = message;
+        StartCoroutine(FadeOutToastMessage());
     }
 
-    void AddToInventory(string itemName)
+    private IEnumerator FadeOutToastMessage()
     {
-        /*
-        if (inventory != null)
-        {
-            // 아이템을 추가할 때 필요한 데이터를 생성합니다.
-            ItemData itemData = new ItemData();
-            itemData.name = itemName;
+        yield return new WaitForSeconds(3.0f); // 초 대기
 
-            // 인벤토리에 아이템을 추가합니다.
-            inventory.AddItem(itemData);
-
-            // 아이템이 성공적으로 추가되었다는 메시지를 출력하거나
-            // 다른 처리를 수행할 수 있습니다.
-            Debug.Log(itemName + "를 인벤토리에 추가했습니다.");
-        }*/
+        // 2초 후에 토스트 메시지 숨기고 비활성화
+        toastMessageuI.SetActive(false);
     }
-
     // 오브젝트 거리 체크
     private bool IsNearObject(GameObject targetObject)
     {

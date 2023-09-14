@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: New Clam
+  m_EditorClassIdentifier: Assembly-CSharp::Clam
+  _ID: 0
+  _name: 
+  Description: 
+  quantity: 0
+  Type: 0
+  Price_Buy: 0
+  Price_Sell: 0
+  Prefab: {fileID: 0}
+  Icon: {fileID: 1283983444, guid: df87b0ae9efd2b24b843d5c293deeec4, type: 3}
+  weapondata: []
+  fishType: 0

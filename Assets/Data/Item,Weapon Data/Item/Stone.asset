@@ -16,7 +16,7 @@ MonoBehaviour:
   _name: "\uB3CC"
   Description: "\uBC14\uC704\uB97C \uCE90\uBA74 \uB098\uC624\uB294 \uC7AC\uB8CC"
   quantity: 0
-  Type: 2
+  Type: 3
   Price_Buy: 0
   Price_Sell: 0
   Prefab: {fileID: 1480632081533811939, guid: 40ffef7be204ff24f88cea12fb87e484, type: 3}

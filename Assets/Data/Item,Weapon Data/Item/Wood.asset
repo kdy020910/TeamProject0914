@@ -16,8 +16,9 @@ MonoBehaviour:
   _name: "\uBAA9\uC7AC"
   Description: "\uB098\uBB34\uB97C \uCE90\uBA74 \uB098\uC624\uB294 \uC7AC\uB8CC"
   quantity: 0
-  Type: 2
+  Type: 3
   Price_Buy: 0
   Price_Sell: 0
   Prefab: {fileID: 6767919349420853385, guid: a1113f094b39fff4bbc24af3883dd686, type: 3}
   Icon: {fileID: -759018259, guid: 82a6947165f480f4c9eb041b851b27cf, type: 3}
+  weapondata: []

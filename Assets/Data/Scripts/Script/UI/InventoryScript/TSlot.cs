@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEditor.UIElements;
+using Unity.VisualScripting;
 
 public class TSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     // private GuideUI guide;
     public Item item;
+    public Fish fish;
 
     public int ItemCount;
 
@@ -52,6 +54,28 @@ public class TSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDr
             Go_CountImage.SetActive(false);
         }
     }
+    public void Addfish(Fish _fish, int count = 1)
+    {
+        fish = _fish;
+        ItemCount = count;
+        itemImage.sprite = _fish.Icon; // 물고기 데이터의 아이콘 설정
+
+        if (fish != null)
+            SetColor(1);
+
+        if (fish.Type != Item.ItemType.Fish)
+        {
+            Go_CountImage.SetActive(true);
+            Text_Count.text = ItemCount.ToString();
+        }
+        else
+        {
+            Text_Count.text = "0";
+            Go_CountImage.SetActive(false);
+        }
+    }
+
+
 
     //아이템 갯수
     public void SetSlotCount(int _count)

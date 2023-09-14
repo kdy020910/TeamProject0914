@@ -97,7 +97,7 @@ public class TInventory : MonoBehaviour
         {
             if (slots[i].item == null)
             {
-                slots[i].AddItem(_item, _count);
+                slots[i].AddItem(_item,  _count);
                 return;
             }
         }
