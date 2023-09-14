@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5336c222e6f61444b841bb96e0431648, type: 3}
+  m_Name: FishingPole
+  m_EditorClassIdentifier: 
+  weaponName: "\uB09A\uC2EF\uB300"
+  weaponPrefab: {fileID: 6140726478023453056, guid: 54f067055f7027b43a894762f72438e3, type: 3}
+  weaponType: 8
+  weaponImage: {fileID: -1388049662, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
+  durability: 30

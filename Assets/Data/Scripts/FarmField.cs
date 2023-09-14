@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum FieldState
+{
+    Empty, Tilled, Planted, Growing, ReadyToHarvest
+}
+
+public class FarmField : SystemProPerty
+{
+    public FieldState currentState = FieldState.Empty;
+    public bool isPlayerInFarm = false; // ¹ç¿¡ µé¾î¿Ô´ÂÁö È®ÀÎ ÇÔ
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInFarm = true;
+            Debug.Log("¹ç¿¡ µé¾î¿È");
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInFarm = false;
+            Debug.Log("¹ç¿¡¼­ ³ª°¨"); 
+        }
+    }
+}

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5336c222e6f61444b841bb96e0431648, type: 3}
+  m_Name: WateringCan
+  m_EditorClassIdentifier: 
+  weaponName: "\uBB3C \uBFCC\uB9AC\uAC1C"
+  weaponPrefab: {fileID: 742696313503776018, guid: 8b1dda6db71ae9f408c0ee3f9ecb9247, type: 3}
+  weaponType: 1
+  weaponImage: {fileID: 2013428706, guid: 781d686f04081ff49ac77a6a9c45424c, type: 3}
+  durability: 0

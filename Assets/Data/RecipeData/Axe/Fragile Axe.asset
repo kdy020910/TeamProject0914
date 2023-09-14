@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca135c67753decc4a8ce55bfb0463477, type: 3}
+  m_Name: Fragile Axe
+  m_EditorClassIdentifier: 
+  recipeName: "\uC5C9\uC131\uD55C \uB3C4\uB07C"
+  recipeDescription: "\uAE08\uBC29\uC774\uB77C\uB3C4 \uBD80\uC154\uC9C8\uAC83\uB9CC
+    \uAC19\uC740 \uC5C9\uC131\uD55C \uB3C4\uB07C\n(\uB0B4\uAD6C\uB3C4 40)"
+  recipeImage: {fileID: 1122646382, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
+  ingredients:
+  - ingredientName: "\uB098\uBB47\uAC00\uC9C0"
+    requiredAmount: 5
+    ingredientIcon: {fileID: -1651849102, guid: 82a6947165f480f4c9eb041b851b27cf, type: 3}
+  - ingredientName: "\uB3CC"
+    requiredAmount: 1
+    ingredientIcon: {fileID: 2067292576, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}

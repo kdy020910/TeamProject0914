@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5336c222e6f61444b841bb96e0431648, type: 3}
+  m_Name: Shovel
+  m_EditorClassIdentifier: 
+  weaponName: "\uC0BD "
+  weaponPrefab: {fileID: 2283954685643031557, guid: 14753d12e9912764db4486f630470de9, type: 3}
+  weaponType: 10
+  weaponImage: {fileID: 1852822495, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
+  durability: 96

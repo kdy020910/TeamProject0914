@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5336c222e6f61444b841bb96e0431648, type: 3}
+  m_Name: Fragile Shovel
+  m_EditorClassIdentifier: 
+  weaponName: "\uC5C9\uC131\uD55C \uC0BD"
+  weaponPrefab: {fileID: 8957691343386006537, guid: ac20f96d7171e414a9184a3a3c1f27b8, type: 3}
+  weaponType: 9
+  weaponImage: {fileID: -380447666, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
+  durability: 36
