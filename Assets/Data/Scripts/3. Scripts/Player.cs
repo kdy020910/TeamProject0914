@@ -52,6 +52,7 @@ public class Player : SystemProPerty
         GetInput();
         Swap();
         Interaction();
+        IMSI();
     }
 
     void GetInput()

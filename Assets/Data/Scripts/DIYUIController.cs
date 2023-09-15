@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 // 레시피창 아이템 슬롯 클릭하면 아이템 이름, 설명이 떠야하고 어떤 재료가 필요한지 떠야함
@@ -9,6 +10,9 @@ using UnityEngine.UI;
 
 public class DIYUIController : SystemProPerty
 {
+    public UnityEvent<RecipeData> onCraftButtonClick = new UnityEvent<RecipeData>();
+    private RecipeData currentRecipeData;
+
     private Image currentClickImage; // 현재 클릭한 슬롯의 clickImage
     public Sprite clickImage;
     public Transform[] slotParents; // 슬롯들이 있는 부모 Transform
@@ -25,42 +29,40 @@ public class DIYUIController : SystemProPerty
 
     private bool canCraft = false; // 아이템 제작 가능 여부
     public Button diyCraftButton; // DIY 제작 버튼
-    public TextMeshProUGUI craftButtonText; // DIY 제작 버튼 텍스트
+    public Text craftButtonText; // DIY 제작 버튼 텍스트
 
     public GameObject toastMessageUI;
     public Text toastMessage;
 
+    TSlot tslot;
     public void Start()
     {
+        tslot = FindObjectOfType<TSlot>(); // TSlot 클래스의 인스턴스를 찾아서 초기화합니다.
+
         toastMessageUI.SetActive(false);
     }
     public void OnRecipeSlotClicked(GameObject clickedSlot)
     {
         if (currentClickImage != null)
         {
-            // 이전에 클릭한 슬롯의 clickImage를 제거
             Destroy(currentClickImage.gameObject);
         }
 
-        // 클릭한 슬롯의 clickImage 생성
         GameObject clickImageObject = new GameObject("ClickImage");
         currentClickImage = clickImageObject.AddComponent<Image>();
         currentClickImage.sprite = clickImage;
-
-        // 클릭 이미지 크기 설정
         RectTransform rectTransform = currentClickImage.rectTransform;
         rectTransform.sizeDelta = imageSize;
-
         currentClickImage.transform.SetParent(clickedSlot.transform, false);
-
-        // 클릭 이미지를 클릭한 슬롯의 가장 나중에 그려지도록 조절
         currentClickImage.transform.SetAsFirstSibling();
 
-        // 클릭한 슬롯의 레시피 데이터를 가져와서 UI를 업데이트
         RecipeSlot recipeSlot = clickedSlot.GetComponentInChildren<RecipeSlot>();
         if (recipeSlot != null && recipeSlot.recipeData != null)
         {
-            ShowRecipeInfo(recipeSlot.recipeData);
+            // currentRecipeData 변수에 레시피 데이터 저장
+            currentRecipeData = recipeSlot.recipeData;
+            ShowRecipeInfo(currentRecipeData);
+            CheckCraftability(currentRecipeData);
         }
     }
 
@@ -87,7 +89,7 @@ public class DIYUIController : SystemProPerty
             {
                 // 레시피 데이터로부터 해당 재료 정보 추출
                 RecipeIngredient ingredient = recipeData.ingredients[i];
-
+               
                 // 재료 이미지 업데이트
                 ingredientImage.sprite = ingredient.ingredientIcon;
 
@@ -95,9 +97,8 @@ public class DIYUIController : SystemProPerty
                 ingredientNameText.text = ingredient.ingredientName;
 
                 // 필요한 재료 갯수 업데이트
-                int requiredAmount = ingredient.requiredAmount;
-               int inventoryAmount = GetInventoryItemCount(ingredient.ingredientName); // 인벤토리에서 해당 재료 갯수 가져오기
-                ingredientAmountText.text = "(" + inventoryAmount + "/0" + requiredAmount + ")";
+                string ingredientAmountTextValue = "(" + GetInventoryItemCount(ingredient.ingredientName) + "/" + ingredient.requiredAmount + ")";
+                ingredientAmountText.text = ingredientAmountTextValue;
 
                 // 해당 UI 요소 활성화
                 ingredientImage.gameObject.SetActive(true);
@@ -105,7 +106,7 @@ public class DIYUIController : SystemProPerty
                 ingredientAmountText.gameObject.SetActive(true);
 
                 // 필요한 재료가 보유한 재료보다 많을 경우 텍스트 색상 변경
-                if (inventoryAmount < requiredAmount)
+                if (GetInventoryItemCount(ingredient.ingredientName) < ingredient.requiredAmount)
                 {
                     ingredientAmountText.color = Color.red;
                 }
@@ -113,6 +114,7 @@ public class DIYUIController : SystemProPerty
                 {
                     ingredientAmountText.color = Color.green;
                 }
+
             }
             else
             {
@@ -126,11 +128,20 @@ public class DIYUIController : SystemProPerty
 
     private int GetInventoryItemCount(string itemName)
     {
+        int itemCount = 0;
 
-        // 슬롯에있는 아이템 개수 불러오기
-        return 0;
-        
+        // 인벤토리 슬롯을 순회하며 아이템 이름과 일치하는 아이템 갯수를 찾습니다.
+        foreach (TSlot slot in tinventory.Slots)
+        {
+            if (slot.item != null && slot.item.Name == itemName)
+            {
+                itemCount += slot.ItemCount;
+            }
+        }
+
+        return itemCount;
     }
+
 
     public void OnExitButtonClicked()
     {
@@ -144,46 +155,61 @@ public class DIYUIController : SystemProPerty
             Destroy(currentClickImage.gameObject);
         }
     }
-
-
     public void CheckCraftability(RecipeData recipeData)
     {
         // 필요한 재료와 보유한 아이템을 비교하여 아이템 제작 가능 여부 확인
         canCraft = true;
-        for (int i = 0; i < recipeData.ingredients.Length; i++)
+        if (tslot != null)
         {
-            RecipeIngredient ingredient = recipeData.ingredients[i];
-            int requiredAmount = ingredient.requiredAmount;
-
-            // 필요한 재료 중 보유한 아이템보다 부족한 것이 있으면 아이템 제작 불가
-            if (tslot.ItemCount < requiredAmount)
-            {
-                canCraft = false;
-                break;
-            }
-        }
-
-        // DIY 제작 버튼 상태 업데이트
-        UpdateCraftButtonState();
-    }
-
-
-    public void OnCraftButtonClick(RecipeData recipeData)
-    {
-        if (canCraft)
-        {
-            // 필요한 재료를 소모하고 아이템 제작
             for (int i = 0; i < recipeData.ingredients.Length; i++)
             {
                 RecipeIngredient ingredient = recipeData.ingredients[i];
                 int requiredAmount = ingredient.requiredAmount;
 
-                // 필요한 재료의 개수를 감소
-                tslot.SetSlotCount(-1);
+                // 필요한 재료 중 보유한 아이템보다 부족한 것이 있으면 아이템 제작 불가
+                if (tslot.ItemCount < requiredAmount) //t 슽롯 참조가 안됨;;
+                {
+                    canCraft = false;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("TSlot is not initialized.");
+        }
+    }
+
+
+    public void OnCraftButtonClick(TSlot tslot)
+    {
+        if (canCraft && currentRecipeData != null)
+        {
+            // 필요한 재료를 소모하고 아이템 제작
+            for (int i = 0; i < currentRecipeData.ingredients.Length; i++)
+            {
+                RecipeIngredient ingredient = currentRecipeData.ingredients[i];
+                int requiredAmount = ingredient.requiredAmount;
+
+                // 해당 재료의 이름
+                string itemName = ingredient.ingredientName;
+
+                
+                // 필요한 재료의 갯수를 현재 인벤토리에서 차감
+                int inventoryItemCount = GetInventoryItemCount(itemName);
+                if (inventoryItemCount >= requiredAmount)
+                {
+                    tslot.SetSlotCount(-requiredAmount, itemName); // 이 부분에서 문제가 발생
+                }
+                else
+                {
+                    Debug.Log("필요한 재료가 충분하지 않습니다.");
+                    return; // 현재 아이템을 제작할 수 없으므로 종료
+                }
             }
 
             // 아이템을 제작하고 인벤토리에 추가
-            Item craftedItem = CraftItem(recipeData);
+            Item craftedItem = CraftItem(currentRecipeData);
             tinventory.AcquireItem(craftedItem, 1);
 
             // 토스트 메시지 출력
@@ -193,26 +219,13 @@ public class DIYUIController : SystemProPerty
             OnExitButtonClicked();
         }
     }
+
+
+
     private void ShowToastMessage(string message)
     {
         toastMessageUI.SetActive(true);
         toastMessage.text = message;
-    }
-
-    private void UpdateCraftButtonState()
-    {
-        if (canCraft)
-        {
-            // 아이템 제작 가능한 경우
-            diyCraftButton.interactable = true;
-            craftButtonText.text = "제작";
-        }
-        else
-        {
-            // 아이템 제작 불가능한 경우
-            diyCraftButton.interactable = false;
-            craftButtonText.text = "재료 부족";
-        }
     }
 
     private Item CraftItem(RecipeData recipeData)

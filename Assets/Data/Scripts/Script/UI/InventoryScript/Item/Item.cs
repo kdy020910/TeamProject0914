@@ -40,9 +40,9 @@ public class Item : ScriptableObject
     [System.Serializable]
     public class Weapon
     {
-    [SerializeField] public Sprite weaponIcon;
-    [SerializeField] public GameObject weaponPrefab;
-    [SerializeField] public WeaponType weaponType; // 무기 유형
-    [SerializeField] public int durability; // 현재 무기 내구도
+        public Sprite weaponIcon;
+        public GameObject weaponPrefab;
+        public WeaponType weaponType; // 무기 유형
+        public int durability; // 현재 무기 내구도
     }
 

@@ -138,19 +138,6 @@ public class SystemProPerty : MonoBehaviour
             return _item;
         }
     }
-    TSlot _tslot = null;
-    protected TSlot tslot
-    {
-        get
-        {
-            _tslot = FindObjectOfType<TSlot>();
-            if(_tslot == null)
-            {
-                _tslot = GetComponent<TSlot>();
-            }
-            return _tslot;
-        }
-    }
     TInventory _tinventory = null;
     protected   TInventory tinventory
     {
@@ -162,6 +149,19 @@ public class SystemProPerty : MonoBehaviour
                 _tinventory= GetComponent<TInventory>();
             }
             return _tinventory;
+        }
+    }
+    RecipeData _recipeData = null;
+    protected RecipeData recipeData
+    {
+        get
+        {
+            _recipeData = FindObjectOfType<RecipeData>();
+            if(_recipeData == null)
+            {
+                _recipeData = GetComponent<RecipeData>();
+            }
+            return _recipeData;
         }
     }
 }

@@ -20,6 +20,7 @@ TagManager:
   - Npc
   - IMSI
   - Farming
+  - TSlot
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,7 @@ MonoBehaviour:
     \uC788\uC744\uAC70 \uAC19\uC544!\n(\uB0B4\uAD6C\uB3C4 100)"
   recipeImage: {fileID: 1852822495, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
   ingredients:
-  - ingredientName: "\uC5C9\uC131\uD55C \uC0BD "
+  - ingredientName: "\uC5C9\uC131\uD55C \uC0BD"
     requiredAmount: 1
     ingredientIcon: {fileID: -380447666, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
   - ingredientName: "\uCCA0\uAD11\uC11D"

@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 6f8aa4692acaf1f439a23d621e8e0b41, type: 3}
       propertyPath: m_Name
-      value: Wood Variant
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6f8aa4692acaf1f439a23d621e8e0b41, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6f8aa4692acaf1f439a23d621e8e0b41, type: 3}
       propertyPath: m_TagString

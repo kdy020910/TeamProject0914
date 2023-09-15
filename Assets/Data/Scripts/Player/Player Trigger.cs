@@ -11,10 +11,9 @@ public class PlayerTrigger : SystemProPerty
     public GameObject stonePrefab; // 돌
     public GameObject ironOrePrefab; // 철광석      
     public GameObject goldOrePrefab; // 금광석
-    public GameObject[] woodPrefabs; // 목재 종류
+    public GameObject woodPrefab; // 목재 
     public GameObject branchPrefab;// 나뭇가지
 
-    private int randomWoodPrefabIndex; // 목재의 랜덤 인덱스 변수
     private List<Vector3> createdBranchPositions = new List<Vector3>();
     public GameObject stumpObject; // 스텀프 오브젝트
     public GameObject hitTreeObject; // 나무 오브젝트
@@ -34,8 +33,6 @@ public class PlayerTrigger : SystemProPerty
         DiyUI.SetActive(false);
         CanRakeUI.SetActive(false);
         farmSystem = GetComponent<FarmSystem>();
-        randomWoodPrefabIndex = Random.Range(0, woodPrefabs.Length); // 목재 프리팹의 랜덤 인덱스 초기화
-
     }
 
     private void Update()
@@ -176,8 +173,8 @@ public class PlayerTrigger : SystemProPerty
                     // 목재 생성
                     for (int i = 0; i < 3; i++)
                     {
-                        Vector3 woodSpawnPosition = GetNonOverlappingPosition(stumpSpawnPosition, woodPrefabs[randomWoodPrefabIndex], createdWoodPositions);
-                        Instantiate(woodPrefabs[randomWoodPrefabIndex], woodSpawnPosition, Quaternion.identity);
+                        Vector3 woodSpawnPosition = GetNonOverlappingPosition(stumpSpawnPosition, woodPrefab, createdWoodPositions);
+                        Instantiate(woodPrefab, woodSpawnPosition, Quaternion.identity);
                         Debug.Log("목재가 드랍됨!");
                     }
                 }

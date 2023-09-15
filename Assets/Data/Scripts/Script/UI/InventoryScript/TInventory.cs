@@ -21,8 +21,9 @@ public class TInventory : MonoBehaviour
     // 해당 컴포넌트가 없으면 슬롯이 올바르게 정렬되지 않고 슬롯끼리 겹쳐진 채 생성됩니다.
 
     private GameObject[] SlotsGO;
-    private TSlot[] Slots;
+    public TSlot[] Slots;
 
+    // 인벤토리 스크립트를 다른 스크립트에서 참조할 때 사용할 정적 인스턴스
     //초기화를 진행합니다.
     private void Awake()
     {

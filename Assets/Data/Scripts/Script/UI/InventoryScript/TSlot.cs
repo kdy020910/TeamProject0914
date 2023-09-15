@@ -32,7 +32,6 @@ public class TSlot : MonoBehaviour,
         {
             guide = FindObjectOfType<GuideUI>().GetComponent<GuideUI>();
             tooltip = FindObjectOfType<TTooltip>().GetComponent<TTooltip>();
-
             if (guide == null || tooltip == null) // null 예외처리
             {
                 Debug.Log("경고! GuideUI 또는 TTooltip 스크립트를 포함한 게임오브젝트를 찾을 수 없습니다.");
@@ -74,23 +73,21 @@ public class TSlot : MonoBehaviour,
         if (item != null) // 아이템이 있을 때만 이미지의 알파값을 활성화하여 표기합니다.
             SetColor(1);
 
-        if (item.Type != Item.ItemType.Equip)
-        {
+       
             Go_CountImage.SetActive(true);
             Text_Count.text = ItemCount.ToString();
-        }
-        else
-        {
-            Text_Count.text = "0";
-            Go_CountImage.SetActive(false);
-        }
+        
+        
+            //Text_Count.text = "0";
+            //Go_CountImage.SetActive(false);
+        
     }
 
     /// <summary>
     /// 각 슬롯의 아이템 갯수를 셉니다.
     /// </summary>
     /// <param name="_count"></param>
-    public void SetSlotCount(int _count)
+    public void SetSlotCount(int _count, string itemName = null)
     {
         ItemCount += _count;
         Text_Count.text = ItemCount.ToString();
@@ -98,7 +95,26 @@ public class TSlot : MonoBehaviour,
         // 아이템 갯수가 0이하라면 슬롯의 모든 값을 비움
         if (ItemCount <= 0)
             ClearSlot();
+
+        // 아이템 이름이 주어지면 해당 아이템의 갯수를 차감
+        if (!string.IsNullOrEmpty(itemName))
+        {
+            // 인벤토리에서 해당 아이템을 찾아서 갯수를 차감
+            TSlot[] inventorySlots = FindObjectsOfType<TSlot>();
+            foreach (TSlot slot in inventorySlots)
+            {
+                if (slot.item != null && slot.item.Name == itemName)
+                {
+                    slot.ItemCount += _count;
+                    slot.Text_Count.text = slot.ItemCount.ToString();
+
+                    if (slot.ItemCount <= 0)
+                        slot.ClearSlot();
+                }
+            }
+        }
     }
+
 
     /// <summary>
     /// 슬롯이 갖는 모든 값을 강제로 비웁니다.

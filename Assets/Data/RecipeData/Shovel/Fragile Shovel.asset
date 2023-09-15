@@ -17,6 +17,9 @@ MonoBehaviour:
     \uAC19\uC740 \uC5C9\uC131\uD55C \uC0BD\n(\uB0B4\uAD6C\uB3C4 40)"
   recipeImage: {fileID: -380447666, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
   ingredients:
-  - ingredientName: "\uBAA9\uC7AC "
+  - ingredientName: "\uBAA9\uC7AC"
     requiredAmount: 5
     ingredientIcon: {fileID: -759018259, guid: 82a6947165f480f4c9eb041b851b27cf, type: 3}
+  - ingredientName: "\uB3CC"
+    requiredAmount: 1
+    ingredientIcon: {fileID: 2067292576, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
