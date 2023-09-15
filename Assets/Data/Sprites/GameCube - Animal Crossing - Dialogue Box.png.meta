@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -106,48 +106,113 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: GameCube - Animal Crossing - Dialogue Box_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 6
+        width: 308
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -74, y: -61}
+        - {x: -103, y: -57}
+        - {x: -135, y: -49}
+        - {x: -153, y: -32}
+        - {x: -155, y: -23}
+        - {x: -154, y: -10}
+        - {x: -141, y: 0}
+        - {x: -150, y: 6}
+        - {x: -154, y: 11}
+        - {x: -155, y: 21}
+        - {x: -154, y: 30}
+        - {x: -153, y: 34}
+        - {x: -124, y: 54}
+        - {x: -75, y: 60}
+        - {x: 112, y: 61}
+        - {x: 153, y: 37}
+        - {x: 155, y: 29}
+        - {x: 155, y: 19}
+        - {x: 154, y: 11}
+        - {x: 141, y: 0}
+        - {x: 153, y: -8}
+        - {x: 155, y: -19}
+        - {x: 153, y: -35}
+        - {x: 102, y: -59}
+        - {x: 14, y: -62}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d9a550ad17c13344b0662f389bb5721
+      internalID: 2040012389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline:
-    - - {x: 57, y: -79.5}
+    - - {x: 55.85637, y: -79.11879}
       - {x: 29, y: -79.5}
       - {x: 5, y: -80.5}
       - {x: -16, y: -80.5}
       - {x: -36, y: -79.5}
-      - {x: -67, y: -79.5}
-      - {x: -92, y: -77.5}
-      - {x: -125, y: -70.5}
-      - {x: -152, y: -53.5}
+      - {x: -63.56909, y: -79.11879}
+      - {x: -90.98344, y: -76.610504}
+      - {x: -120.679596, y: -70.11879}
+      - {x: -140.14116, y: -62.131508}
+      - {x: -152, y: -51.681805}
       - {x: -154, y: -47.5}
       - {x: -155, y: -41.5}
-      - {x: -155, y: -35.5}
-      - {x: -154, y: -31.5}
+      - {x: -154.89305, y: -35.5}
+      - {x: -153.46524, y: -30.216564}
       - {x: -151, y: -25.5}
-      - {x: -142, y: -18.5}
-      - {x: -151, y: -11.5}
-      - {x: -155, y: -4.5}
-      - {x: -154, y: 0.5}
-      - {x: -154, y: 5.5}
-      - {x: -154, y: 14.5}
-      - {x: -131, y: 30.5}
+      - {x: -141.25133, y: -18.606949}
+      - {x: -150.90187, y: -11.107513}
+      - {x: -154.31314, y: -5.4812164}
+      - {x: -154.68686, y: 1.0887299}
+      - {x: -154.29437, y: 5.8924866}
+      - {x: -152.52817, y: 12.635681}
+      - {x: -146.44788, y: 20.082047}
+      - {x: -130.50938, y: 29.126297}
       - {x: -99, y: 38.5}
       - {x: -52, y: 42.5}
-      - {x: -16, y: 43.5}
-      - {x: 42, y: 42.5}
-      - {x: 90, y: 39.5}
-      - {x: 136, y: 29.5}
-      - {x: 154, y: 12.5}
-      - {x: 154, y: 8.5}
-      - {x: 154, y: -2.5}
-      - {x: 154, y: -7.5}
-      - {x: 141, y: -18.5}
-      - {x: 148, y: -20.5}
+      - {x: -5.11882, y: 43.5}
+      - {x: 50.130157, y: 42.732285}
+      - {x: 90.69687, y: 38.80313}
+      - {x: 119.0679, y: 33.32447}
+      - {x: 139.699, y: 25.436333}
+      - {x: 151.13153, y: 15.066536}
+      - {x: 154.45291, y: 8.198051}
+      - {x: 155.35876, y: 3.3879395}
+      - {x: 154.76929, y: -2.0924911}
+      - {x: 153.24512, y: -6.74514}
+      - {x: 149.08578, y: -12.09066}
+      - {x: 139.18832, y: -18.198051}
+      - {x: 148.75485, y: -23.670425}
       - {x: 154, y: -31.5}
       - {x: 155, y: -38.5}
       - {x: 154, y: -46.5}
-      - {x: 143, y: -62.5}
-      - {x: 109, y: -73.5}
+      - {x: 149.22647, y: -53.477985}
+      - {x: 135.45132, y: -63.267315}
+      - {x: 100.48627, y: -73.75414}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -157,7 +222,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GameCube - Animal Crossing - Dialogue Box_0: 2040012389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

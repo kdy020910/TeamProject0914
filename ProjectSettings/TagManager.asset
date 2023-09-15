@@ -16,6 +16,10 @@ TagManager:
   - Stump
   - HardWood
   - Branch
+  - Tool
+  - Npc
+  - IMSI
+  - Farming
   layers:
   - Default
   - TransparentFX
@@ -25,7 +29,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - item
   - Player
   - Object
   - Shop

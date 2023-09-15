@@ -20,7 +20,7 @@ public class Item : ScriptableObject
     [SerializeField]public string _name;
     [TextArea(3, 6)]
     [SerializeField]public string Description;         // 설명
-    [SerializeField, Range(1, 99)] int quantity; // 수량
+    [SerializeField, Range(1, 99)]public int quantity; // 수량
     public ItemType Type;
 
     [Space(10)]

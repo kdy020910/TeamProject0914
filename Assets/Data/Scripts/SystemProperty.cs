@@ -38,21 +38,21 @@ public class SystemProPerty : MonoBehaviour
             return _img;
         }
     }
-    PlayerController _playerController = null;
-    protected PlayerController playerController
+    MountingSlot _mountingSlot = null;
+    protected MountingSlot mountingSlot
     {
         get
         {
-            _playerController = FindObjectOfType<PlayerController>();
-            if (_playerController == null)
+            _mountingSlot = FindObjectOfType<MountingSlot>();
+            if (_mountingSlot == null)
             {
-                _playerController = GetComponent<PlayerController>();
-                if (playerController == null)
+                _mountingSlot = GetComponent<MountingSlot>();
+                if (_mountingSlot == null)
                 {
-                    _playerController = GetComponentInChildren<PlayerController>();
+                    _mountingSlot = GetComponentInChildren<MountingSlot>();
                 }
             }
-            return _playerController;
+            return _mountingSlot;
         }
     }
     PlayerTrigger _playerTrigger = null;
@@ -149,6 +149,19 @@ public class SystemProPerty : MonoBehaviour
                 _tslot = GetComponent<TSlot>();
             }
             return _tslot;
+        }
+    }
+    TInventory _tinventory = null;
+    protected   TInventory tinventory
+    {
+        get
+        {
+            _tinventory = FindObjectOfType<TInventory>();
+            if(_tinventory == null)
+            {
+                _tinventory= GetComponent<TInventory>();
+            }
+            return _tinventory;
         }
     }
 }

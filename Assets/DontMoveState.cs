@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DontMoveState : StateMachineBehaviour
 {
+    public bool isContinue = false;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -19,7 +20,7 @@ public class DontMoveState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("IsDontMove", false);
+        if(!isContinue) animator.SetBool("IsDontMove", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

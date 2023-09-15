@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ActionController : MonoBehaviour
 {
-    [SerializeField] private float range; // 습득 거리
+    [SerializeField] private float radius;  //반지름
+    [SerializeField] private float maxDist; //거리
     private bool pickupActivated = false;
     private RaycastHit hitInfo;
 
@@ -34,11 +35,13 @@ public class ActionController : MonoBehaviour
     {
         if (pickupActivated)
         {
-            if(hitInfo.transform != null)
+            if (hitInfo.transform != null)
             {
-                Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.Name + "을 획득하였습니다");
-                TheInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
-                Destroy(hitInfo.transform.gameObject);
+                bool Acquired = TheInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
+
+                if (Acquired)
+                    Destroy(hitInfo.transform.gameObject);
+
                 InfoDisappear();
             }
         }
@@ -46,10 +49,12 @@ public class ActionController : MonoBehaviour
 
     private void CheckItem()
     {
-        Vector3 y = new(0, 0, 0);
-        if (Physics.Raycast(transform.position + y, transform.TransformDirection(Vector3.forward), out hitInfo, range, ItemMask))
+        // SphereCast의 범위 내의 Item 레이어가 포함된 게임오브젝트를 판별합니다.
+        Vector3 orgPos = transform.position;
+        Vector3 Dir = transform.forward;
+        if (Physics.SphereCast(orgPos, radius, Dir, out hitInfo, maxDist, ItemMask))
         {
-            ItemInfoAppear(); 
+            ItemInfoAppear();
         }
         else
             InfoDisappear();
@@ -69,4 +74,19 @@ public class ActionController : MonoBehaviour
         actionText.transform.parent.gameObject.SetActive(false);
         actionText.gameObject.SetActive(false);
     }
+    /*
+    private CollectionSystem CollectIdxSystem = new CollectionSystem();
+
+    // 아이템 수집에 따른 도감 활성화
+    private void Collecting()
+    {
+        CollectionSystem CollecSystem = new CollectionSystem();
+
+        CollectionItem cItem = new CollectionItem { ID = 1, Name = "Item" };
+        // 아이템 수집 여부 확인
+        bool isItemCollected = CollectIdxSystem.IsItemCollected(cItem); // true
+        // 아이템 수집
+        if (isItemCollected)
+            CollectIdxSystem.CollectItem(cItem);
+    }*/
 }

@@ -23,6 +23,17 @@ public class DIYUIController : SystemProPerty
     public TextMeshProUGUI[] ingredientNameTexts; // 재료 이름 ui
     public TextMeshProUGUI[] ingredientAmountTexts; // 재료 갯수 ui 
 
+    private bool canCraft = false; // 아이템 제작 가능 여부
+    public Button diyCraftButton; // DIY 제작 버튼
+    public TextMeshProUGUI craftButtonText; // DIY 제작 버튼 텍스트
+
+    public GameObject toastMessageUI;
+    public Text toastMessage;
+
+    public void Start()
+    {
+        toastMessageUI.SetActive(false);
+    }
     public void OnRecipeSlotClicked(GameObject clickedSlot)
     {
         if (currentClickImage != null)
@@ -84,35 +95,136 @@ public class DIYUIController : SystemProPerty
                 ingredientNameText.text = ingredient.ingredientName;
 
                 // 필요한 재료 갯수 업데이트
-                ingredientAmountText.text = "(00/0" + ingredient.requiredAmount + ")";
+                int requiredAmount = ingredient.requiredAmount;
+               int inventoryAmount = GetInventoryItemCount(ingredient.ingredientName); // 인벤토리에서 해당 재료 갯수 가져오기
+                ingredientAmountText.text = "(" + inventoryAmount + "/0" + requiredAmount + ")";
 
                 // 해당 UI 요소 활성화
                 ingredientImage.gameObject.SetActive(true);
                 ingredientNameText.gameObject.SetActive(true);
                 ingredientAmountText.gameObject.SetActive(true);
+
+                // 필요한 재료가 보유한 재료보다 많을 경우 텍스트 색상 변경
+                if (inventoryAmount < requiredAmount)
+                {
+                    ingredientAmountText.color = Color.red;
+                }
+                else
+                {
+                    ingredientAmountText.color = Color.green;
+                }
             }
             else
             {
                 // 필요하지 않은 경우
                 ingredientImage.gameObject.SetActive(false);
                 ingredientNameText.gameObject.SetActive(false);
-                ingredientAmountText.gameObject.SetActive(false); 
+                ingredientAmountText.gameObject.SetActive(false);
             }
         }
     }
 
+    private int GetInventoryItemCount(string itemName)
+    {
 
+        // 슬롯에있는 아이템 개수 불러오기
+        return 0;
+        
+    }
 
     public void OnExitButtonClicked()
     {
         // DIY UI를 비활성화
         playerTrigger.DiyUI.SetActive(false);
         diyField.CanDiyUi.SetActive(true);
-
+        playerTrigger.ItemSlot.SetActive(true);
         // 현재 클릭한 슬롯의 clickImage 제거
         if (currentClickImage != null)
         {
             Destroy(currentClickImage.gameObject);
         }
+    }
+
+
+    public void CheckCraftability(RecipeData recipeData)
+    {
+        // 필요한 재료와 보유한 아이템을 비교하여 아이템 제작 가능 여부 확인
+        canCraft = true;
+        for (int i = 0; i < recipeData.ingredients.Length; i++)
+        {
+            RecipeIngredient ingredient = recipeData.ingredients[i];
+            int requiredAmount = ingredient.requiredAmount;
+
+            // 필요한 재료 중 보유한 아이템보다 부족한 것이 있으면 아이템 제작 불가
+            if (tslot.ItemCount < requiredAmount)
+            {
+                canCraft = false;
+                break;
+            }
+        }
+
+        // DIY 제작 버튼 상태 업데이트
+        UpdateCraftButtonState();
+    }
+
+
+    public void OnCraftButtonClick(RecipeData recipeData)
+    {
+        if (canCraft)
+        {
+            // 필요한 재료를 소모하고 아이템 제작
+            for (int i = 0; i < recipeData.ingredients.Length; i++)
+            {
+                RecipeIngredient ingredient = recipeData.ingredients[i];
+                int requiredAmount = ingredient.requiredAmount;
+
+                // 필요한 재료의 개수를 감소
+                tslot.SetSlotCount(-1);
+            }
+
+            // 아이템을 제작하고 인벤토리에 추가
+            Item craftedItem = CraftItem(recipeData);
+            tinventory.AcquireItem(craftedItem, 1);
+
+            // 토스트 메시지 출력
+            ShowToastMessage("아이템 " + craftedItem.Name + "을(를) 제작했다!");
+
+            // DIY UI 닫기
+            OnExitButtonClicked();
+        }
+    }
+    private void ShowToastMessage(string message)
+    {
+        toastMessageUI.SetActive(true);
+        toastMessage.text = message;
+    }
+
+    private void UpdateCraftButtonState()
+    {
+        if (canCraft)
+        {
+            // 아이템 제작 가능한 경우
+            diyCraftButton.interactable = true;
+            craftButtonText.text = "제작";
+        }
+        else
+        {
+            // 아이템 제작 불가능한 경우
+            diyCraftButton.interactable = false;
+            craftButtonText.text = "재료 부족";
+        }
+    }
+
+    private Item CraftItem(RecipeData recipeData)
+    {
+        // 아이템 제작에 대한 로직을 구현하여 새로운 아이템을 생성
+        // 예: 아이템 이름, 아이콘, 속성 설정 등
+
+        // 아래는 예시로 빈 아이템을 생성하는 코드입니다.
+        Item craftedItem = new Item();
+        craftedItem._name = recipeData.recipeName;
+        craftedItem.Icon = recipeData.recipeImage;
+
+        return craftedItem;
     }
 }

@@ -1356,6 +1356,7 @@ GameObject:
   - component: {fileID: 4562243446250651837}
   - component: {fileID: 3034698892465754285}
   - component: {fileID: 9048439423744218995}
+  - component: {fileID: 5239465289213625646}
   m_Layer: 0
   m_Name: Sample 03
   m_TagString: Player
@@ -1423,6 +1424,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   equippedWeapon: {fileID: 0}
+  currentEquippedWeapon:
+    weaponIcon: {fileID: 0}
+    weaponPrefab: {fileID: 0}
+    weaponType: 0
+    durability: 0
   IsNoneEquipped: 1
   isShovelEquipped: 0
   isAxeEquipped: 0
@@ -1430,7 +1436,8 @@ MonoBehaviour:
   isRakeEquipped: 0
   isWateringCanEquipped: 0
   slotBackgrounds: []
-  currentEquippedWeapon: {fileID: 0}
+  selectedSlotNumber: -1
+  slotGameObjects: []
 --- !u!114 &3034698892465754285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,7 +1460,6 @@ MonoBehaviour:
   hitRockObject: {fileID: 0}
   maxInteractionDistance: 2
   CanRakeUI: {fileID: 0}
-  CanFishUI: {fileID: 0}
   DiyUI: {fileID: 0}
 --- !u!114 &9048439423744218995
 MonoBehaviour:
@@ -1472,6 +1478,21 @@ MonoBehaviour:
   seedContainer: {fileID: 0}
   plantingTime: 10
   seeds: []
+--- !u!114 &5239465289213625646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2172321074600270556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe28ced9a36c62e4ca7b24cfc52d33ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toastMessageuI: {fileID: 0}
+  toastMessage: {fileID: 0}
+  CanFishUI: {fileID: 0}
 --- !u!1 &2172321074600270558
 GameObject:
   m_ObjectHideFlags: 0

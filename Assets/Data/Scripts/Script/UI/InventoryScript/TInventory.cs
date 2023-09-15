@@ -1,105 +1,89 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+// 인벤토리 스크립트는 Player에게 부착해주세요.
+// 인벤토리 UI에 직접 넣게 되면
+// 닫았을 때 false 상태여서 위치를 읽어오지 못해 다시 열리지 않습니다.
 public class TInventory : MonoBehaviour
 {
-    static TInventory instance  = null;
-    static bool _invenAct = false;
-    private static bool InventoryActivated
-    {
-        get => _invenAct;
-        set
-        {
-            _invenAct = value;
-            instance.GO_InventoryBase.SetActive(_invenAct);
-        }
-    }
-    public int slotSize;
+    [Tooltip("생성할 슬롯의 갯수를 입력합니다. 최대 40개까지 가능합니다."), Range(1, 40)]
+    public int Slotsize;
 
     [Header("바인딩")]
-    [SerializeField] private GameObject Go_SlotsParent; // 슬롯의 부모 (Grid Layout Group 필요)
     public GameObject Prefab;            // 슬롯 프리팹
-    public GameObject GO_InventoryBase;  // 인벤 (Go_SlotsParent의 부모)
+    public GameObject InventoryUI;       // 인벤 (InventoryContents의 부모)
+    [SerializeField]
+    private GameObject InventoryContents; // 슬롯들의 부모
+
+    // InventoryContents는 슬롯들의 부모로서 Grid Layout Group 컴포넌트가 필요합니다.
+    // 해당 컴포넌트가 없으면 슬롯이 올바르게 정렬되지 않고 슬롯끼리 겹쳐진 채 생성됩니다.
 
     private GameObject[] SlotsGO;
-    private TSlot[] slots;
+    private TSlot[] Slots;
 
+    //초기화를 진행합니다.
     private void Awake()
     {
-        instance = this;
-        CloseInventory();
+        //슬롯을 먼저 생성합니다.
         CreateSlots();
+        Slots = InventoryContents.GetComponentsInChildren<TSlot>();
     }
 
-    private void Start()
-    {
-        slots = Go_SlotsParent.GetComponentsInChildren<TSlot>();
-    }
-
-    private void Update()
-    {
-        TryOpenInventory();
-    }
-
+    /// <summary>
+    ///  Prefab에 등록된 GameObject(prefab)를 NewSlot으로 생성합니다. Slotsize의 갯수만큼 생성됩니다.
+    /// </summary>
     public void CreateSlots()
     {
-        SlotsGO = new GameObject[slotSize];
+        SlotsGO = new GameObject[Slotsize];
 
         if (Prefab != null)
         {
-            for (int i = 0; i < slotSize; i++)
+            for (int i = 0; i < Slotsize; i++)
             {
                 GameObject NewSlot = Instantiate(Prefab);
                 NewSlot.GetComponent<TSlot>();
                 NewSlot.name = "ItemSlot" + i;
-                NewSlot.transform.SetParent(GO_InventoryBase.transform.GetChild(0).transform);
+                NewSlot.transform.SetParent(InventoryUI.transform.GetChild(0).transform);
                 SlotsGO[i] = NewSlot;
             }
         }
-    }    
-
-    private void TryOpenInventory()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            InventoryActivated = !InventoryActivated;            
-        }
-        /*
-        if (InventoryActivated)
-            OPenInventory();
-        else
-            CloseInventory();
-        */
     }
 
-    void OPenInventory() => GO_InventoryBase.SetActive(true);
-    void CloseInventory() => GO_InventoryBase.SetActive(false);
-
-    public void AcquireItem(Item _item, int _count =1)
+    /// <summary>
+    /// 슬롯 배열의 길이만큼 아이템을 습득합니다.
+    /// </summary>
+    /// <param name="_item"></param>
+    /// <param name="_count"></param>
+    public bool AcquireItem(Item _item, int _count = 1)
     {
         if (Item.ItemType.Equip != _item.Type)
         {
-            for (int i = 0; i < slots.Length; i++)
+            for (int i = 0; i < Slots.Length; i++)
             {
-                if (slots[i].item != null)
+                if (Slots[i].item != null)
                 {
-                    if (slots[i].item.Name == _item.Name)
+                    if (Slots[i].item.Name == _item.Name)
                     {
-                        slots[i].SetSlotCount(_count);
-                        return;
+                        Slots[i].SetSlotCount(_count);
+                        return true;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < slots.Length; i++)
+        // 인벤토리에 빈 공간이 있다면 각 슬롯에 아이템을 추가합니다.
+        for (int i = 0; i < Slots.Length; i++)
         {
-            if (slots[i].item == null)
+            if (Slots[i].item == null)
             {
-                slots[i].AddItem(_item,  _count);
-                return;
+                Slots[i].AddItem(_item, _count);
+                return true;
             }
         }
+
+        // 슬롯 내 빈 공간이 없을 때는 습득할 수 없으므로 false를 반환합니다.
+        return false;
     }
 }

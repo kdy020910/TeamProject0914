@@ -77,7 +77,7 @@ public class FarmSystem : SystemProPerty
         for (int slotNumber = 1; slotNumber <= 4; slotNumber++)
         {
             // 해당 슬롯의 무기를 가져옵니다.
-            if (playerController.equippedWeaponsMap.TryGetValue(slotNumber, out Weapon selectedWeapon))
+            if (mountingSlot.equippedWeaponsMap.TryGetValue(slotNumber, out Weapon selectedWeapon))
             {
                 // 해당 슬롯에 씨앗이 있는지 확인합니다.
                 if (selectedWeapon.weaponType == WeaponType.Seed)
@@ -122,7 +122,7 @@ public class FarmSystem : SystemProPerty
         for (int slotNumber = 1; slotNumber <= 4; slotNumber++)
         {
             // 해당 슬롯의 무기를 가져옵니다.
-            if (playerController.equippedWeaponsMap.TryGetValue(slotNumber, out Weapon selectedWeapon))
+            if (mountingSlot.equippedWeaponsMap.TryGetValue(slotNumber, out Weapon selectedWeapon))
             {
                 // 해당 슬롯에 씨앗이 있는지 확인합니다.
                 if (selectedWeapon.weaponType == WeaponType.Seed)
