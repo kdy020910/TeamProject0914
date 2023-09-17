@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName ="4Team Project/Create Item", order = 3)]
 public class Item : ScriptableObject
 {
-    public enum ItemType { Equip, Food, Fish, Default }
+    public enum ItemType { Equip, Food, Fish, Default,Seed }
 
     public int Id => _ID;
     public string Name => _name;
@@ -32,7 +32,11 @@ public class Item : ScriptableObject
     [Header("바인딩")]
     public GameObject Prefab;
     public Sprite Icon;
-    
+
+    [Space(10)]
+    [Header("씨앗 심었을때 생길 프리펩")]
+    public GameObject SeedPrefab; // 해당 씨앗의 프리팹
+
     [Header("무기 데이터")]
     public Weapon[] weapondata; //무기 데이터 추가
 }
@@ -44,5 +48,6 @@ public class Item : ScriptableObject
         public GameObject weaponPrefab;
         public WeaponType weaponType; // 무기 유형
         public int durability; // 현재 무기 내구도
+
     }
 

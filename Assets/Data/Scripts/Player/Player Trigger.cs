@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 // ³ªÁß¿¡ ÄÚµå ÁÙÀÌ±â
-public class PlayerTrigger : SystemProPerty
+public class PlayerTrigger : AnimationSystem
 {
     public GameObject stonePrefab; // µ¹
     public GameObject ironOrePrefab; // Ã¶±¤¼®      
@@ -80,23 +80,6 @@ public class PlayerTrigger : SystemProPerty
             HandleWateringCanAction();
         }
     }
-
-    //µµ³¢
-    private void HandleAxeAction()
-    {     
-        myAnim.SetTrigger("Axing");   
-    }
-    //»ð
-    private void HandleShovelAction()
-    {
-        myAnim.SetTrigger("Shoveling");
-    }
-    // ¹°»Ñ¸®°³
-    private void HandleWateringCanAction()
-    {
-         myAnim.SetTrigger("Sprayingwater");
-    }
-
    
     // °¥Äû 
     // -³»±¸µµ-

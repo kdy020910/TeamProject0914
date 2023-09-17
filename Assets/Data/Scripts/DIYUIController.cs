@@ -199,7 +199,7 @@ public class DIYUIController : SystemProPerty
                 int inventoryItemCount = GetInventoryItemCount(itemName);
                 if (inventoryItemCount >= requiredAmount)
                 {
-                    tslot.SetSlotCount(-requiredAmount, itemName); // 이 부분에서 문제가 발생
+                    item.quantity--;
                 }
                 else
                 {

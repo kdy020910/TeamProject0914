@@ -2,112 +2,126 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Seed", menuName = "Custom/Seed")]
-public class Seed : ScriptableObject
-{
-    public string seedName; // 씨앗의 이름 (감자, 토마토, 호박, 옥수수, 당근)
-    public GameObject seedPrefab; // 해당 씨앗에 대한 프리팹
-    public Sprite seedSprite; // 씨앗 이미지
-    public SeedType seedType;
-}
-public enum SeedType
-{
-    Carrot, Potato, Tomato, Corn, Pumpkin
-}
-
 public class FarmSystem : SystemProPerty
 {
     public GameObject harvestUI; // 수확하기 UI 오브젝트 
     public GameObject plantUI; // 심기 UI
-    public Transform seedContainer; // 씨앗들이 들어 있는 컨테이너 (밭의 자식 오브젝트)
-
-    public float plantingTime = 10.0f; // 씨앗 심은 시간
-    private float plantedTime;
 
     private bool CanPlantSeed = false;
     private int currentSeedIndex = 0;
 
-    public List<Seed> seeds; // 다양한 종류의 씨앗 정보
+    public FarmField[] farmFields; // 밭 정보 배열
 
     private void Start()
     {
         harvestUI.SetActive(false);
         plantUI.SetActive(false);
+
+        // FarmField 배열 초기화
+        farmFields = new FarmField[9];
+
+        for (int i = 0; i < 9; i++)
+        {
+            farmFields[i] = new FarmField();
+
+            // 각 밭에 9개의 seedPosition을 추가
+            for (int j = 0; j < 9; j++)
+            {
+                // 밭의 이름을 사용하여 SeedPosition 찾기
+                Transform seedPosition = transform.Find("Field" + i + "/SeedPosition" + j);
+
+                if (seedPosition != null)
+                {
+                    farmFields[i].seedPositions.Add(seedPosition);
+                }
+            }
+        }
     }
 
     private void Update()
     {
-        if (HasSeedInSlot() && farmField.isPlayerInFarm && farmField.currentState == FieldState.Tilled)
+        // farmFields를 순회하며 각각의 상태를 확인
+        foreach (FarmField farmField in farmFields)
         {
-            CanPlantSeed = true;
-            plantUI.SetActive(true);
-
-            if (Input.GetKeyDown(KeyCode.F))
+            if (farmField.isPlayerInFarm && farmField.currentState == FieldState.Tilled)
             {
-                PlantSeedOnField();
+                CanPlantSeed = true;
+                plantUI.SetActive(true);
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    PlantSeedOnField(farmField);
+                }
+            }
+            else
+            {
+                CanPlantSeed = false;
+                plantUI.SetActive(false);
+            }
+
+            if (farmField.currentState == FieldState.ReadyToHarvest)
+            {
+                Harvest(farmField);
             }
         }
-        else
-        {
-            CanPlantSeed = false;
-            plantUI.SetActive(false);
-        }
-
-        if (farmField.currentState == FieldState.ReadyToHarvest)
-        {
-            Harvest();
-        }
-
-        if (farmField.currentState == FieldState.Planted && Time.time - plantedTime > plantingTime)
-        {
-            ChangeState(FieldState.Growing);
-        }
     }
+
+    // 밭 상태 변경
     public void ChangeState(FieldState newState)
     {
         farmField.currentState = newState;
         if (newState == FieldState.Planted)
         {
-            plantedTime = Time.time;
+
         }
-    }
-    public bool HasSeedInSlot()
-    {
-        // 1부터 4까지의 슬롯 번호를 반복합니다.
-        for (int slotNumber = 1; slotNumber <= 4; slotNumber++)
-        {
-            // 해당 슬롯의 무기를 가져옵니다.
-            if (mountingSlot.equippedWeaponsMap.TryGetValue(slotNumber, out Weapon selectedWeapon))
-            {
-                // 해당 슬롯에 씨앗이 있는지 확인합니다.
-                if (selectedWeapon.weaponType == WeaponType.Seed)
-                {
-                    // 슬롯에 씨앗이 있는 경우 true를 반환합니다.
-                    return true;
-                }
-            }
-        }
-        // 모든 슬롯에서 씨앗을 찾지 못한 경우 false를 반환합니다.
-        return false;
     }
 
-    public void PlantSeedOnField()
+    private void PlantSeedOnField(FarmField farmField)
     {
         if (farmField != null && farmField.currentState == FieldState.Tilled)
         {
-            int slotNumberWithSeed = FindSlotWithSeed();
-            if (slotNumberWithSeed != -1)
-            {
-                ChangeState(FieldState.Planted);
-                Debug.Log("씨앗을 심었습니다!");
-                plantUI.SetActive(false);
+            // 현재 선택된 슬롯의 게임 오브젝트 가져오기
+            GameObject selectedSlotObject = mountingSlot.GetSelectedSlotObject();
 
-                // 씨앗을 순차적으로 활성화
-                ActivateNextSeed();
+            // 슬롯 오브젝트로부터 TSlot 컴포넌트 가져오기
+            TSlot selectedSlot = selectedSlotObject.GetComponent<TSlot>();
+
+            if (selectedSlot != null)
+            {
+                // 슬롯에 있는 무기 데이터 가져오기
+                Item selectedSeedItem = selectedSlot.item;
+
+                if (selectedSeedItem.Type == Item.ItemType.Seed)
+                {
+                    // 현재 밭에 심어진 씨앗 개수 체크
+                    if (farmField.plantedSeeds.Count < farmField.maxSeedCount)
+                    {
+                        // 씨앗을 심는 작업 수행
+                        farmField.currentState = FieldState.Planted;
+                        farmField.plantedSeeds.Add(selectedSeedItem);
+                        Debug.Log("씨앗을 심었습니다: " + selectedSeedItem._name);
+
+                        // 선택한 씨앗을 심을 위치에 씨앗 배치
+                        foreach (Transform spawnPosition in farmField.seedPositions)
+                        {
+                            Instantiate(selectedSeedItem.SeedPrefab, spawnPosition.position, Quaternion.identity);
+                        }
+
+                        plantUI.SetActive(false);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("해당 밭에는 더 이상 씨앗을 심을 수 없습니다.");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("선택한 슬롯에 씨앗이 아닌 다른 아이템이 장착되어 있습니다.");
+                }
             }
             else
             {
-                Debug.LogWarning("슬롯에서 씨앗을 찾을 수 없습니다.");
+                Debug.LogWarning("선택한 슬롯에서 TSlot 컴포넌트를 찾을 수 없습니다.");
             }
         }
         else
@@ -116,50 +130,13 @@ public class FarmSystem : SystemProPerty
         }
     }
 
-    private int FindSlotWithSeed()
-    {
-        // 1부터 4까지의 슬롯 번호를 반복합니다.
-        for (int slotNumber = 1; slotNumber <= 4; slotNumber++)
-        {
-            // 해당 슬롯의 무기를 가져옵니다.
-            if (mountingSlot.equippedWeaponsMap.TryGetValue(slotNumber, out Weapon selectedWeapon))
-            {
-                // 해당 슬롯에 씨앗이 있는지 확인합니다.
-                if (selectedWeapon.weaponType == WeaponType.Seed)
-                {
-                    // 슬롯에 씨앗이 있는 경우 슬롯 번호를 반환합니다.
-                    return slotNumber;
-                }
-            }
-        }
 
-        // 씨앗이 없는 경우 -1을 반환합니다.
-        return -1;
-    }
 
-    public void Harvest()
+    public void Harvest(FarmField farmField)
     {
         ChangeState(FieldState.Empty);
         harvestUI.SetActive(false);
         // 여기에서 수확 로직을 구현하세요.
         // 수확한 아이템을 어딘가에 추가하거나 다른 처리를 수행하세요.
-    }
-
-    private void ActivateNextSeed()
-    {
-        if (currentSeedIndex < seeds.Count)
-        {
-            // 다음 씨앗 정보를 가져옵니다.
-            Seed nextSeed = seeds[currentSeedIndex];
-
-            // 해당 씨앗에 대한 프리팹을 생성하여 밭에 심습니다.
-            GameObject plantedSeed = Instantiate(nextSeed.seedPrefab, seedContainer);
-
-            // 설정된 위치 및 회전값을 조절할 수 있습니다.
-            plantedSeed.transform.position = Vector3.zero;
-            plantedSeed.transform.rotation = Quaternion.identity;
-
-            currentSeedIndex++;
-        }
     }
 }

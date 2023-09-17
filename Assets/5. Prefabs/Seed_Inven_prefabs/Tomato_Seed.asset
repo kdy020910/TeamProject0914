@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
-  m_Name: Corn_Seed
+  m_Name: Tomato_Seed
   m_EditorClassIdentifier: 
   _ID: 0
-  _name: Corn_Seed
+  _name: Tomato
   Description: 
-  quantity: 1
+  quantity: 0
   Type: 4
-  Price_Buy: 20
-  Price_Sell: 10
-  Prefab: {fileID: 5268286829825406256, guid: 9cefeddfffada134c9e9f6673b968a94, type: 3}
-  Icon: {fileID: -507743279, guid: fdffba883ce17c24791dd238729f72e0, type: 3}
+  Price_Buy: 0
+  Price_Sell: 0
+  Prefab: {fileID: 9159564695698326434, guid: 1c629463179787d4f9278225ec605f2f, type: 3}
+  Icon: {fileID: 21300000, guid: 7594c41b22594df4e8196cc69d1333f2, type: 3}
   SeedPrefab: {fileID: 6671860512069578089, guid: 5b4db619bf3b44641a8375d033cd6dff, type: 3}
   weapondata:
-  - weaponIcon: {fileID: -507743279, guid: fdffba883ce17c24791dd238729f72e0, type: 3}
-    weaponPrefab: {fileID: 5268286829825406256, guid: 9cefeddfffada134c9e9f6673b968a94, type: 3}
-    weaponType: 15
+  - weaponIcon: {fileID: 21300000, guid: 7594c41b22594df4e8196cc69d1333f2, type: 3}
+    weaponPrefab: {fileID: 9159564695698326434, guid: 1c629463179787d4f9278225ec605f2f, type: 3}
+    weaponType: 14
     durability: 0

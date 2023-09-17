@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
-  m_Name: Tomato 5
+  m_Name: Carrot
   m_EditorClassIdentifier: 
-  types: 6
-  Value: 4
   _ID: 0
-  _name: Tomato
+  _name: Carrot
   Description: 
   quantity: 1
-  Type: 1
+  Type: 0
   Price_Buy: 20
   Price_Sell: 10
-  Prefab: {fileID: 3361181191096193913, guid: ff45cdfe9db430a4cab783cab42f3561, type: 3}
-  Icon: {fileID: 21300000, guid: 30d4a080569a91f4fbbf04178dc8e2d3, type: 3}
+  Prefab: {fileID: 3483505782573124213, guid: d95912c996ce3f540a4581d2a487d716, type: 3}
+  Icon: {fileID: 21300000, guid: 7376e43b0e99503459e36425c2693128, type: 3}
+  weapondata: []

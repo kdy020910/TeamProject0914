@@ -259,7 +259,7 @@ public class Player : SystemProPerty
         }
         else
         {
-            Debug.Log("아직 해당 ㄴㄴ");
+            //Debug.Log("아직 해당 ㄴㄴ");
         }
     }
 

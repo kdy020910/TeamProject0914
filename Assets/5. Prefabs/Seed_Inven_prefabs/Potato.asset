@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: Potato
   m_EditorClassIdentifier: 
-  types: 6
-  Value: 2
   _ID: 0
   _name: Potato
   Description: 
   quantity: 1
-  Type: 1
+  Type: 0
   Price_Buy: 20
   Price_Sell: 10
   Prefab: {fileID: 3169804603947035796, guid: b6baaf0018564be4693f6e7b417c7ba9, type: 3}
   Icon: {fileID: 21300000, guid: 1a2124eaeb3926a4594aacfb5ef78c16, type: 3}
+  weapondata: []

@@ -13,6 +13,7 @@ public class AnimationSystem : SystemProPerty
 
         myAnim.SetBool("IsRake", weaponType == WeaponType.Rake);
         myAnim.SetBool("IsWateringCan", weaponType == WeaponType.WateringCan);
+        myAnim.SetBool("IsSeed", weaponType == WeaponType.Carrot || weaponType == WeaponType.Corn || weaponType == WeaponType.Pumpkin || weaponType == WeaponType.Tomato || weaponType == WeaponType.Potato);
     }
 
     protected void AnimationParameterFalse()
@@ -22,5 +23,21 @@ public class AnimationSystem : SystemProPerty
         myAnim.SetBool("IsShovel", false);
         myAnim.SetBool("IsFishingPole", false);
         myAnim.SetBool("IsRake", false);
+        myAnim.SetBool("IsSeed", false);
+    }
+    //µµ³¢
+    protected void HandleAxeAction()
+    {
+        myAnim.SetTrigger("Axing");
+    }
+    //»ð
+    protected void HandleShovelAction()
+    {
+        myAnim.SetTrigger("Shoveling");
+    }
+    // ¹°»Ñ¸®°³
+    protected void HandleWateringCanAction()
+    {
+        myAnim.SetTrigger("Sprayingwater");
     }
 }
