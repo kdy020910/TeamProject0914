@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5988508332220318228}
   - component: {fileID: 6673686975368123134}
   - component: {fileID: 7081362516461571638}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Tomato
   m_TagString: Farming
   m_Icon: {fileID: 0}
@@ -25,6 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3361181191096193913}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,7 +34,6 @@ Transform:
   - {fileID: 2643822585508458702}
   - {fileID: 1566260776588693975}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6673686975368123134
 MonoBehaviour:
@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 0e2fcd841bc178e47a1b98eac427b370, type: 2}
-  value: 4
 --- !u!136 &7081362516461571638
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -83,7 +82,7 @@ GameObject:
   - component: {fileID: 2643822585508458702}
   - component: {fileID: 313922230109423683}
   - component: {fileID: 3715345177301433162}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Tomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,13 +96,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3447148222588496969}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0.1005, z: 0}
   m_LocalScale: {x: 53.377434, y: 53.37739, z: 53.37739}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5988508332220318228}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &313922230109423683
 MeshFilter:
@@ -166,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1566260776588693975}
   - component: {fileID: 7984537493481567750}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,13 +179,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4325823780309075858}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.6471859, y: -0.2848691, z: 0.28486896, w: 0.64718604}
   m_LocalPosition: {x: -0.01, y: 0.02, z: 0.01}
   m_LocalScale: {x: 0.44464505, y: 0.44464523, z: 0.44464523}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5988508332220318228}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 47.515003}
 --- !u!212 &7984537493481567750
 SpriteRenderer:
@@ -237,6 +236,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

@@ -21,6 +21,7 @@ TagManager:
   - IMSI
   - Farming
   - TSlot
+  - MountSlot
   layers:
   - Default
   - TransparentFX

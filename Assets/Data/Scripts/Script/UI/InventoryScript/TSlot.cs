@@ -53,9 +53,12 @@ public class TSlot : MonoBehaviour,
     /// <param name="_alpha"></param>
     private void SetColor(float _alpha)
     {
-        Color color = itemImage.color;
-        color.a = _alpha;
-        itemImage.color = color;
+        if (!CompareTag("MountSlot"))
+        {
+            Color color = itemImage.color;
+            color.a = _alpha;
+            itemImage.color = color;
+        }
     }
 
     /// <summary>

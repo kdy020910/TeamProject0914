@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5985025573340726724}
   - component: {fileID: 773737430146900029}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503789380723420244}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.6471859, y: -0.2848691, z: 0.28486896, w: 0.64718604}
   m_LocalPosition: {x: -0.01, y: 0.02, z: 0.01}
   m_LocalScale: {x: 0.43500006, y: 0.43500024, z: 0.43500024}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1250114795065480719}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 47.515003}
 --- !u!212 &773737430146900029
 SpriteRenderer:
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3108428076906285662
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7103842512389827929}
   - component: {fileID: 8527088166426949594}
   - component: {fileID: 633688809704988962}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Potato 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,13 +109,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3108428076906285662}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.014294386, y: 0.1005, z: 0}
   m_LocalScale: {x: 36.652344, y: 36.652344, z: 36.652344}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1250114795065480719}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8527088166426949594
 MeshFilter:
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1250114795065480719}
   - component: {fileID: 1060021781215215579}
   - component: {fileID: 1877602477444508419}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Potato
   m_TagString: Farming
   m_Icon: {fileID: 0}
@@ -192,6 +192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3169804603947035796}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -200,7 +201,6 @@ Transform:
   - {fileID: 7103842512389827929}
   - {fileID: 5985025573340726724}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1060021781215215579
 MonoBehaviour:
@@ -215,7 +215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2d40b329f9b29ea4eb00e75961b6ed0e, type: 2}
-  value: 2
 --- !u!136 &1877602477444508419
 CapsuleCollider:
   m_ObjectHideFlags: 0
