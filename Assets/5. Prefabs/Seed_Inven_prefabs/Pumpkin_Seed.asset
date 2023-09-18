@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: Pumpkin_Seed
   m_EditorClassIdentifier: 
+  Value: 0
   _ID: 0
   _name: Pumpkin
   Description: 
@@ -22,6 +23,8 @@ MonoBehaviour:
   Prefab: {fileID: 5696217205891139203, guid: c9544e03f9b036243ae9f159cc13f2c2, type: 3}
   Icon: {fileID: 21300000, guid: 3bd26644896900e499b97c296d86e34e, type: 3}
   SeedPrefab: {fileID: 6513624147902100278, guid: 660033b70f0292a4db393bc8a266af88, type: 3}
+  GrowingPrefab: {fileID: 503523924078075009, guid: 9b9ef9205474a3c448d078c79856c2ef, type: 3}
+  FullyGrownPrefab: {fileID: 503523924078075009, guid: 9b9ef9205474a3c448d078c79856c2ef, type: 3}
   weapondata:
   - weaponIcon: {fileID: 21300000, guid: 3bd26644896900e499b97c296d86e34e, type: 3}
     weaponPrefab: {fileID: 5696217205891139203, guid: c9544e03f9b036243ae9f159cc13f2c2, type: 3}

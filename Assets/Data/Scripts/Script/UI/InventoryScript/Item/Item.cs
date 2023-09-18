@@ -37,7 +37,12 @@ public class Item : ScriptableObject
     [Space(10)]
     [Header("씨앗 심었을때 생길 프리펩")]
     public GameObject SeedPrefab; // 해당 씨앗의 프리팹
+    [Header("자랄때 변경될 프리펩")]
+    public GameObject GrowingPrefab;
+    [Header("다 자란 프리펩")]
+    public GameObject FullyGrownPrefab;
 
+    [Space(10)]
     [Header("무기 데이터")]
     public Weapon[] weapondata; //무기 데이터 추가
 }

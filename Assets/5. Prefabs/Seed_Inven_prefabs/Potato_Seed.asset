@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: Potato_Seed
   m_EditorClassIdentifier: 
+  Value: 0
   _ID: 0
   _name: Potato
   Description: 
@@ -22,6 +23,8 @@ MonoBehaviour:
   Prefab: {fileID: 8417937026763122551, guid: ec710dff166de6446bdae019beecf425, type: 3}
   Icon: {fileID: 21300000, guid: adb1802a0b8ea1d449ef0b8174c43e26, type: 3}
   SeedPrefab: {fileID: 7649264159311131690, guid: ea6725d5d7401454d990c3215707bf68, type: 3}
+  GrowingPrefab: {fileID: 7649264159311131690, guid: ea6725d5d7401454d990c3215707bf68, type: 3}
+  FullyGrownPrefab: {fileID: 7649264159311131690, guid: ea6725d5d7401454d990c3215707bf68, type: 3}
   weapondata:
   - weaponIcon: {fileID: 21300000, guid: adb1802a0b8ea1d449ef0b8174c43e26, type: 3}
     weaponPrefab: {fileID: 8417937026763122551, guid: ec710dff166de6446bdae019beecf425, type: 3}

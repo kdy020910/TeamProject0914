@@ -117,12 +117,20 @@ public class FarmSystem : SystemProPerty
                                 farmField.plantedSeeds.Add(selectedSeedItem);
                                 Debug.Log("씨앗을 심었습니다: " + selectedSeedItem._name);
 
+                                // 작물에 씨앗 아이템 정보 할당
+                                Crop crop = farmField.seedPositions[i].GetComponent<Crop>();
+                                if (crop != null)
+                                {
+                                    crop.plantedSeed = selectedSeedItem;
+                                }
+
                                 // 다음에 심을 위치를 계산
                                 int positionIndex = farmField.plantedSeeds.Count - 1;
                                 if (positionIndex < farmField.seedPositions.Length)
                                 {
                                     // 해당 위치에 씨앗을 배치
-                                    Instantiate(selectedSeedItem.SeedPrefab, farmField.seedPositions[positionIndex].position, Quaternion.identity);
+                                    GameObject seedPrefab = Instantiate(selectedSeedItem.SeedPrefab, farmField.seedPositions[positionIndex].position, Quaternion.identity);
+                                    seedPrefab.transform.parent = farmField.seedPositions[positionIndex]; // 씨앗 프리팹을 위치의 자식으로 설정
                                 }
                                 else
                                 {
@@ -154,6 +162,7 @@ public class FarmSystem : SystemProPerty
             Debug.LogWarning("밭이 존재하지 않거나 갈린 상태가 아닙니다.");
         }
     }
+
 
     private void Harvest(FarmField farmField, int positionIndex)
     {

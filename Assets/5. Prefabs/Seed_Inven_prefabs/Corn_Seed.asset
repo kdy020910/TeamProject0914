@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: Corn_Seed
   m_EditorClassIdentifier: 
+  Value: 0
   _ID: 0
   _name: Corn_Seed
   Description: 
@@ -22,6 +23,8 @@ MonoBehaviour:
   Prefab: {fileID: 5268286829825406256, guid: 9cefeddfffada134c9e9f6673b968a94, type: 3}
   Icon: {fileID: -507743279, guid: fdffba883ce17c24791dd238729f72e0, type: 3}
   SeedPrefab: {fileID: 6671860512069578089, guid: 5b4db619bf3b44641a8375d033cd6dff, type: 3}
+  GrowingPrefab: {fileID: 8498059979642780095, guid: 8dffa3a8d9f48824ba21d54ece6f34a4, type: 3}
+  FullyGrownPrefab: {fileID: 8498059979642780095, guid: 8dffa3a8d9f48824ba21d54ece6f34a4, type: 3}
   weapondata:
   - weaponIcon: {fileID: -507743279, guid: fdffba883ce17c24791dd238729f72e0, type: 3}
     weaponPrefab: {fileID: 5268286829825406256, guid: 9cefeddfffada134c9e9f6673b968a94, type: 3}

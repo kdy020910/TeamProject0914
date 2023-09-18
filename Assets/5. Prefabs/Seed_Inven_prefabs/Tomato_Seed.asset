@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: Tomato_Seed
   m_EditorClassIdentifier: 
+  Value: 0
   _ID: 0
   _name: Tomato
   Description: 
@@ -22,6 +23,8 @@ MonoBehaviour:
   Prefab: {fileID: 9159564695698326434, guid: 1c629463179787d4f9278225ec605f2f, type: 3}
   Icon: {fileID: 21300000, guid: 7594c41b22594df4e8196cc69d1333f2, type: 3}
   SeedPrefab: {fileID: 6671860512069578089, guid: 5b4db619bf3b44641a8375d033cd6dff, type: 3}
+  GrowingPrefab: {fileID: 5906256750959014873, guid: f2a30ae4ac2b62a4891797dac68752b7, type: 3}
+  FullyGrownPrefab: {fileID: 4527557052073233462, guid: e0919b97e6cf5884c92d38e00a1dea89, type: 3}
   weapondata:
   - weaponIcon: {fileID: 21300000, guid: 7594c41b22594df4e8196cc69d1333f2, type: 3}
     weaponPrefab: {fileID: 9159564695698326434, guid: 1c629463179787d4f9278225ec605f2f, type: 3}

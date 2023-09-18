@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: Carrot_Seed
   m_EditorClassIdentifier: 
+  Value: 0
   _ID: 0
   _name: Carat_Seed
   Description: 
@@ -22,6 +23,8 @@ MonoBehaviour:
   Prefab: {fileID: 8359628704345993140, guid: aa0e2c709415fb44d9b32014dc432d4e, type: 3}
   Icon: {fileID: 21300000, guid: e3d9ef304fe721f4194a89b922e7c203, type: 3}
   SeedPrefab: {fileID: 6671860512069578089, guid: 5b4db619bf3b44641a8375d033cd6dff, type: 3}
+  GrowingPrefab: {fileID: 6671860512069578089, guid: 5b4db619bf3b44641a8375d033cd6dff, type: 3}
+  FullyGrownPrefab: {fileID: 6671860512069578089, guid: 5b4db619bf3b44641a8375d033cd6dff, type: 3}
   weapondata:
   - weaponIcon: {fileID: 21300000, guid: e3d9ef304fe721f4194a89b922e7c203, type: 3}
     weaponPrefab: {fileID: 8359628704345993140, guid: aa0e2c709415fb44d9b32014dc432d4e, type: 3}

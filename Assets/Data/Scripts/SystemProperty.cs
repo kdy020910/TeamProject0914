@@ -164,4 +164,17 @@ public class SystemProPerty : MonoBehaviour
             return _recipeData;
         }
     }
+    Crop _crop = null;
+    protected Crop crop
+    {
+        get
+        {
+            _crop = FindObjectOfType<Crop>();
+            if(_crop == null)
+            {
+                _crop = GetComponent<Crop>();
+            }
+            return _crop;
+        }
+    }
 }
