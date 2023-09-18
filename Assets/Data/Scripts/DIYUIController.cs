@@ -30,13 +30,14 @@ public class DIYUIController : SystemProPerty
     public Button diyCraftButton; // DIY 제작 버튼
     public Text craftButtonText; // DIY 제작 버튼 텍스트
 
-    public GameObject toastMessageUI;
-    public Text toastMessage;
+    public GameObject craftMessageUI;
+    public Text craftMessage;
 
-    public void Start()
+    private void Awake()
     {
-        toastMessageUI.SetActive(false);
+        craftMessageUI.SetActive(false);
     }
+
     public void OnRecipeSlotClicked(GameObject clickedSlot)
     {
         if (currentClickImage != null)
@@ -120,33 +121,16 @@ public class DIYUIController : SystemProPerty
             Item craftedItem = CraftItem(currentRecipeData);
             tinventory.AcquireItem(craftedItem, 1);
 
+            OnExitButtonClicked();
             // 토스트 메시지 출력
             ShowToastMessage("아이템 " + craftedItem.Name + "을(를) 제작했다!");
-
-            OnExitButtonClicked();
+            craftMessageUI.SetActive(false); // 이부분 수정해야함 안되는중
         }
         else
         {
             Debug.Log("아이템을 제작할 수 없습니다.");
         }
-    }
-    private void ShowToastMessage(string message)
-    {
-        toastMessageUI.SetActive(true);
-        toastMessage.text = message;
-        StartCoroutine(FadeOutMessage());
-    }
 
-    private IEnumerator FadeOutMessage()
-    {
-        var off = new WaitForSecondsRealtime(3.0f);
-
-        toastMessageUI.SetActive(false);
-        //yield return new WaitForSeconds(1.0f); // 3초 대기
-
-        yield return off;
-
-        // 3초 후에 토스트 메시지 숨기고 비활성화
     }
 
     public void ShowRecipeInfo(RecipeData recipeData)
@@ -276,4 +260,9 @@ public class DIYUIController : SystemProPerty
         return craftedItem;
     }
 
+    private void ShowToastMessage(string message)
+    {
+         craftMessageUI.SetActive(true);
+         craftMessage.text = message;
+    }
 }

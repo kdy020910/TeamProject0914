@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName ="4Team Project/Create Item", order = 3)]
 public class Item : ScriptableObject
 {
-    public enum ItemType { Equip, Food, Fish, Default,Seed }
+    public enum ItemType { Equip, Food, Fish, Default, Seed }
 
     public int Id => _ID;
     public string Name => _name;

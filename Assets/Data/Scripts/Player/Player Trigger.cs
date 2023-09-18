@@ -21,25 +21,20 @@ public class PlayerTrigger : AnimationSystem
 
     public float maxInteractionDistance = 2.0f; // 최대 상호작용 거리
 
-    public GameObject CanRakeUI; // 갈퀴 상호작용 
-
     public GameObject DiyUI;     // 작업대 상호작용
-    FarmSystem farmSystem;
 
     public GameObject ItemSlot;
 
     private void Start()
     {
         DiyUI.SetActive(false);
-        CanRakeUI.SetActive(false);
-        farmSystem = GetComponent<FarmSystem>();
     }
 
     private void Update()
     {
         HandleDIyAction();
         HandleActions();
-        HandleFarmFieldActions();
+
     }
 
     private void HandleActions()
@@ -81,25 +76,6 @@ public class PlayerTrigger : AnimationSystem
         }
     }
    
-    // 갈퀴 
-    // -내구도-
-    // 갈퀴 : 10
-    private void HandleFarmFieldActions()
-    {
-        if (mountingSlot.isRakeEquipped && farmField.isPlayerInFarm && farmField.currentState == FieldState.Empty)
-        {
-            CanRakeUI.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                myAnim.SetTrigger("Raking");
-                farmSystem.ChangeState(FieldState.Tilled);
-            }
-        }
-        else
-        {
-            CanRakeUI.SetActive(false);
-        }
-    }
 
     //DIY 작업대 관련 코드
     private void HandleDIyAction()
