@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class ActionController : MonoBehaviour
 {
-    [SerializeField] private float radius;  //반지름
-    [SerializeField] private float maxDist; //거리
+    [SerializeField] private float range; // 습득 거리
     private bool pickupActivated = false;
     private RaycastHit hitInfo;
 
@@ -15,6 +14,8 @@ public class ActionController : MonoBehaviour
 
     [SerializeField, Header("바인딩")]
     private Text actionText;
+
+    public Player player;
 
     private void Update()
     {
@@ -49,10 +50,9 @@ public class ActionController : MonoBehaviour
 
     private void CheckItem()
     {
-        // SphereCast의 범위 내의 Item 레이어가 포함된 게임오브젝트를 판별합니다.
-        Vector3 orgPos = transform.position;
-        Vector3 Dir = transform.forward;
-        if (Physics.SphereCast(orgPos, radius, Dir, out hitInfo, maxDist, ItemMask))
+        Vector3 y = new Vector3(0, 0.3f, 0);
+
+        if (Physics.Raycast(transform.position, player.dirVec, out hitInfo, range, ItemMask))
         {
             ItemInfoAppear();
         }

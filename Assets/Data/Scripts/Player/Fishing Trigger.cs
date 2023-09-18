@@ -10,6 +10,7 @@ public class FishingTrigger : SystemProPerty
     public Text toastMessage;
     public GameObject CanFishUI; // 낚시 상호작용
 
+    Player player;
     private void Start()
     {
         toastMessageUI.SetActive(false);
@@ -33,6 +34,17 @@ public class FishingTrigger : SystemProPerty
         {
             CanFishUI.SetActive(false);
         }
+    }
+    public bool SetIsMoving()
+    {
+        myAnim.SetBool("IsMoving", true);
+        return true; // 성공적으로 설정되었을 때 true를 반환
+    }
+    public void OnFishingAnimationStart(Player _player)
+    {
+        player = _player;
+        player = FindObjectOfType<Player>();
+        player.Speed = 0;
     }
     // 낚시 성공 또는 실패 체크 및 데이터 추가
     public void OnFishingAnimationEnd()
@@ -109,6 +121,7 @@ public class FishingTrigger : SystemProPerty
                 ShowToastMessage("아무것도 낚지 못했다!");
             }
         }
+        player.Speed = 4;
     }
 
     // 토스트 메시지 표시

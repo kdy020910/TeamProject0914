@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: FishingPole
   m_EditorClassIdentifier: 
+  Value: 0
   _ID: 0
   _name: "\uB09A\uC2EF\uB300"
   Description: "\uBB3C\uACE0\uAE30\uB97C \uB09A\uC744 \uC218 \uC788\uB2E4. \uB0B4\uAD6C\uB3C4
@@ -22,8 +23,9 @@ MonoBehaviour:
   Price_Sell: 0
   Prefab: {fileID: 6140726478023453056, guid: 54f067055f7027b43a894762f72438e3, type: 3}
   Icon: {fileID: -1388049662, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
+  SeedPrefab: {fileID: 0}
   weapondata:
   - weaponIcon: {fileID: -1388049662, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
     weaponPrefab: {fileID: 6140726478023453056, guid: 54f067055f7027b43a894762f72438e3, type: 3}
-    weaponType: 8
+    weaponType: 7
     durability: 30

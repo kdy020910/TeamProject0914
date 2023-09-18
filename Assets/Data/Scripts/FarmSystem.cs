@@ -17,25 +17,7 @@ public class FarmSystem : SystemProPerty
         harvestUI.SetActive(false);
         plantUI.SetActive(false);
 
-        // FarmField 배열 초기화
-        farmFields = new FarmField[9];
-
-        for (int i = 0; i < 9; i++)
-        {
-            farmFields[i] = new FarmField();
-
-            // 각 밭에 9개의 seedPosition을 추가
-            for (int j = 0; j < 9; j++)
-            {
-                // 밭의 이름을 사용하여 SeedPosition 찾기
-                Transform seedPosition = transform.Find("Field" + i + "/SeedPosition" + j);
-
-                if (seedPosition != null)
-                {
-                    farmFields[i].seedPositions.Add(seedPosition);
-                }
-            }
-        }
+      
     }
 
     private void Update()
@@ -129,8 +111,6 @@ public class FarmSystem : SystemProPerty
             Debug.LogWarning("밭이 존재하지 않거나 갈린 상태가 아닙니다.");
         }
     }
-
-
 
     public void Harvest(FarmField farmField)
     {

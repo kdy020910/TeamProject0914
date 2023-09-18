@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: Fragile Shovel
   m_EditorClassIdentifier: 
+  Value: 0
   _ID: 0
   _name: "\uC5C9\uC131\uD55C \uC0BD"
   Description: "\uB3CC\uB3C4 \uCE90\uACE0 \uB098\uBB34 \uBC11\uB465\uC744 \uC5C6\uC568
@@ -22,8 +23,9 @@ MonoBehaviour:
   Price_Sell: 0
   Prefab: {fileID: 8957691343386006537, guid: ac20f96d7171e414a9184a3a3c1f27b8, type: 3}
   Icon: {fileID: -380447666, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
+  SeedPrefab: {fileID: 0}
   weapondata:
   - weaponIcon: {fileID: -380447666, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
     weaponPrefab: {fileID: 8957691343386006537, guid: ac20f96d7171e414a9184a3a3c1f27b8, type: 3}
-    weaponType: 9
+    weaponType: 8
     durability: 40

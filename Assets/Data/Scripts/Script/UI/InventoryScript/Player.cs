@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : SystemProPerty
 {
     public float h, v;
-    public float Speed;
+    public float Speed = 4.0f;
     public GameObject[] tools;
     public bool[] hasTools;     // 플레이어에서 나중에 도구 개수만큼 갯수 생성해야 오류없이 잘 됨
     public float rotSpeed = 10f;
@@ -26,13 +26,11 @@ public class Player : SystemProPerty
     protected Vector3 moveVec;
 
     public GameManager manager;
-    //public Items items;
-    //Shop shop;
-    //scanObject, nearObject 두개 일단 다르지만 같은 것일수도
     GameObject scanObject;
 
     GameObject equipTool;
     int equipToolIndex = -1;
+    PlayerTrigger playerTrigger;
 
     void Awake()
     {
@@ -41,18 +39,18 @@ public class Player : SystemProPerty
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerTrigger = GetComponentInChildren<PlayerTrigger>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-
         GetInput();
         Swap();
         Interaction();
-        IMSI();
+
+        Lay();
+        Move();
     }
 
     void GetInput()
@@ -67,34 +65,34 @@ public class Player : SystemProPerty
         //sDown3 = Input.GetButton("Swap3");
     }
 
-    void IMSI()
-    {
-        if (!myAnim.GetBool("IsDontMove") && !playerTrigger.DiyUI.activeSelf) // 애니메이션 중일 때 움직임을 막음
-        {
-            // 이동
-            float hAxis = Input.GetAxisRaw("Horizontal");
-            float vAxis = Input.GetAxisRaw("Vertical");
-
-            dirVec = new Vector3(hAxis, 0, vAxis).normalized;
-
-            transform.position += dirVec * Speed * Time.deltaTime;
-
-            // 회전
-            if (dirVec != Vector3.zero)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(dirVec, Vector3.up);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotSpeed * Time.deltaTime);
-            }
-
-            myAnim.SetBool("IsMoving", dirVec != Vector3.zero);
-        }
-    }
-
     void Move()
     {
-        transform.Translate(new Vector3(h, 0, v) * Speed * Time.deltaTime);
+        moveVec = new Vector3(h, 0, v).normalized;
+        //transform.Translate(moveVec * Speed * Time.deltaTime);
+        transform.position += moveVec * Speed * Time.deltaTime;
 
-        //방향벡터 전체 지정
+        if (!myAnim.GetBool("IsDontMove") && !playerTrigger.DiyUI.activeSelf)
+        {
+            if (moveVec != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(moveVec, Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotSpeed * Time.deltaTime);
+            }
+            if (SetIsMoving() && h == 0 && v == 0)
+            {
+                myAnim.SetBool("IsMoving", false);
+            }
+        }
+        //transform.Translate(new Vector3(h, 0, v) * Speed * Time.deltaTime);
+    }
+    public bool SetIsMoving()
+    {
+        myAnim.SetBool("IsMoving", true);
+        return true; // 성공적으로 설정되었을 때 true를 반환
+    }
+
+    void Lay()
+    {
         if (h > 0 && h <= 1 && v == 0)
         {
             dirVec = new Vector3(1, 0, 0);
@@ -127,11 +125,16 @@ public class Player : SystemProPerty
         {
             dirVec = new Vector3(1, 0, -1);
         }
+        /*else
+        {
+            dirVec = Vector3.zero;
+        }*/
 
-        Vector3 movVec = isHorizonMove ? new Vector3(h, 0, 0) : new Vector3(0, 0, v);
-        rigid.velocity = movVec * Speed;
+        //transform.position += moveVec * Speed * Time.deltaTime;
+        //Vector3 movVec = isHorizonMove ? new Vector3(h, 0, 0) : new Vector3(0, 0, v);
+        rigid.velocity = moveVec * Speed * Time.deltaTime;
 
-        //RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 1.0f, LayerMask.GetMask("Object"));
+        //방향벡터 전체 지정
 
         if (Physics.Raycast(rigid.position, dirVec, out rayHit, 1.0f, LayerMask.GetMask("Object")))
         {
@@ -260,7 +263,7 @@ public class Player : SystemProPerty
         else
         {
             //Debug.Log("아직 해당 ㄴㄴ");
-        }
+        } 
     }
 
     private void OnTriggerExit(Collider other)

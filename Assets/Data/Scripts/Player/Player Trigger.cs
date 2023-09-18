@@ -109,7 +109,6 @@ public class PlayerTrigger : AnimationSystem
             // f 누르면 diy작업 ui가 뜸
             DiyUI.SetActive(true);
             diyField.CanDiyUi.SetActive(false);
-            ItemSlot.SetActive(false);
         }
     }
 
