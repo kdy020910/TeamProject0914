@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24595,7 +24595,7 @@ MonoBehaviour:
   cropID: 0
   positionIndex: 0
   currentState: 0
-  growthTime: 30
+  growthTime: 15
   plantedSeed: {fileID: 0}
   elapsedTime: 0
 --- !u!1 &1726406395 stripped
@@ -33848,7 +33848,7 @@ MonoBehaviour:
   cropID: 1
   positionIndex: 1
   currentState: 0
-  growthTime: 30
+  growthTime: 10
   plantedSeed: {fileID: 0}
   elapsedTime: 0
 --- !u!1 &1964847164

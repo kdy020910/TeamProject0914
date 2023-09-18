@@ -51,12 +51,17 @@ public class FarmSystem : SystemProPerty
                 {
                     if (farmField.positionsState[i] == FieldState.ReadyToHarvest)
                     {
-                        Harvest(farmField, i);
+                        if (Input.GetKeyDown(KeyCode.F))
+                        {
+                            Harvest(farmField, i);
+                            harvestUI.SetActive(false);
+                        }
                     }
                 }
             }
         }
     }
+
 
     // 갈퀴 
     // -내구도-
@@ -163,17 +168,36 @@ public class FarmSystem : SystemProPerty
         }
     }
 
-
     private void Harvest(FarmField farmField, int positionIndex)
     {
         if (farmField.positionsState[positionIndex] == FieldState.ReadyToHarvest)
         {
-            // 여기에서 수확 로직을 구현하세요.
-            // 수확한 아이템을 어딘가에 추가하거나 다른 처리를 수행하세요.
+            harvestUI.SetActive(true);
+            // 여기에서 수확 로직을 구현합니다.
+            // 수확한 아이템을 어딘가에 추가하거나 다른 처리를 수행합니다.
 
-            // 상태 변경
-            farmField.positionsState[positionIndex] = FieldState.Empty;
-            harvestUI.SetActive(false);
+            // 아이템 데이터를 가져옵니다. 여기에서는 농작물을 나타내는 Crop 컴포넌트의 plantedSeed를 사용합니다.
+            Item harvestedItem = farmField.seedPositions[positionIndex].GetComponent<Crop>().plantedSeed;
+
+            if (harvestedItem != null)
+            {
+                // 인벤토리에 아이템을 추가합니다. AcquireItem 메서드를 사용할 수 있다고 가정합니다.
+                bool acquired = tinventory.AcquireItem(harvestedItem);
+
+                if (acquired)
+                {
+                    // 아이템을 성공적으로 인벤토리에 추가한 경우, 밭의 상태를 빈 상태로 변경합니다.
+                    farmField.positionsState[positionIndex] = FieldState.Empty;
+                }
+                else
+                {
+                    Debug.LogWarning("인벤토리에 더 이상 아이템을 추가할 수 없습니다.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("수확할 아이템 데이터가 없습니다.");
+            }
         }
     }
 }

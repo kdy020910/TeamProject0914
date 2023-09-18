@@ -23,32 +23,17 @@ public class Crop : SystemProPerty
 
     public float elapsedTime = 0f; // 독립적인 elapsedTime을 가짐
 
-    private bool isGrowing = false;
-    private bool isPlanted = false;
-
     private void Start()
     {
         // 씨앗을 처음 심을 때 elapsedTime 초기화
         elapsedTime = 0f;
-        isPlanted = true;
     }
     private void Update()
     {
         // Crop 인스턴스를 식별하기 위해 cropID를 사용합니다.
-        // 예를 들어, cropID가 "Crop_0"인 경우 0번 포지션의 Crop을 나타냅니다.
-
         if (positionIndex >= 0 && positionIndex < farmField.positionsState.Length &&
-            farmField.positionsState[positionIndex] == FieldState.Planted)
+         farmField.positionsState[positionIndex] == FieldState.Planted)
         {
-            // 씨앗을 처음 심을 때 elapsedTime 초기화
-            if (!isPlanted)
-            {
-                elapsedTime = 0f;
-                isPlanted = true;
-            }
-
-            // 다음 코드에서 cropID를 사용하여 현재 Crop 인스턴스를 식별합니다.
-            // 이 부분을 cropID를 사용하는 방식으로 수정해야 합니다.
 
             if (currentState == CropState.Planted)
             {
@@ -61,12 +46,16 @@ public class Crop : SystemProPerty
             }
             else if (currentState == CropState.Growing)
             {
-                // Growing 상태에서만 시간이 흐르도록 수정
+                // Growing 상태에서 시간이 흐르도록 수정
                 elapsedTime += Time.deltaTime;
                 if (elapsedTime >= growthTime)
                 {
                     ChangeState(CropState.ReadyToHarvest);
                 }
+            }
+            else if (currentState == CropState.ReadyToHarvest)
+            {
+                // ReadyToHarvest 상태에서 다른 상태로 변경하려면 필요한 조건을 여기에 추가할 수 있습니다.
             }
         }
     }
@@ -91,7 +80,7 @@ public class Crop : SystemProPerty
             // 작물 상태를 밭에 반영
             if (farmField != null)
             {
-                farmField.ChangePositionState(positionIndex, FieldState.Growing);
+                farmField.ChangePositionState(positionIndex, FieldState.ReadyToHarvest);
             }
         }
 
@@ -113,14 +102,5 @@ public class Crop : SystemProPerty
             newPrefab.transform.localPosition = Vector3.zero; // 로컬 포지션을 (0, 0, 0)으로 설정
             newPrefab.transform.localRotation = Quaternion.identity; // 로컬 회전을 기본값으로 설정
         }
-
-        // 상태 변경
-        currentState = newState;
-
-        // 초기화
-        elapsedTime = 0f;
-        isGrowing = false;
     }
-
-
 }
