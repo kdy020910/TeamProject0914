@@ -77,6 +77,10 @@ PrefabInstance:
       value: Gold Axe
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 381bdf1537f4c9d4393b709e608f15a2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 381bdf1537f4c9d4393b709e608f15a2, type: 3}
       propertyPath: m_TagString
       value: Weapon
       objectReference: {fileID: 0}
@@ -87,6 +91,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 381bdf1537f4c9d4393b709e608f15a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4194432354908099573}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 381bdf1537f4c9d4393b709e608f15a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7852678731537143044}
   m_SourcePrefab: {fileID: 100100000, guid: 381bdf1537f4c9d4393b709e608f15a2, type: 3}
 --- !u!1 &3196533049005216445 stripped
 GameObject:
@@ -114,3 +121,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13937548, y: 1.2866535, z: 0.49535644}
   m_Center: {x: 0.000000014901161, y: 0.021550983, z: 0.16300315}
+--- !u!114 &-7852678731537143044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3196533049005216445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2a3b296c60f444aa2a1fd66205e3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: e5025cd1fe136344dbea392627c23e0f, type: 2}

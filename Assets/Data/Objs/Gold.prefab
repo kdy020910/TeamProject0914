@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2312231301953692191}
   - component: {fileID: 7995047649668581650}
   - component: {fileID: 4990700135744354361}
-  - component: {fileID: 2290470351950951380}
+  - component: {fileID: 7661270109602636586}
+  - component: {fileID: 8458434217734474024}
   m_Layer: 8
   m_Name: Gold
   m_TagString: Untagged
@@ -107,8 +108,8 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1627475778993297674, guid: ca5ac28e795a37c44aa3109f09bf6eda, type: 3}
---- !u!136 &2290470351950951380
-CapsuleCollider:
+--- !u!135 &7661270109602636586
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -125,8 +126,19 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.19064087
-  m_Height: 0.34727204
-  m_Direction: 1
-  m_Center: {x: -0.0003886521, y: -0.00000009685755, z: 0.000000074505806}
+  serializedVersion: 3
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8458434217734474024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8161930190919047171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2a3b296c60f444aa2a1fd66205e3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 0566bab406c893c4ea193ccdd9119f7d, type: 2}

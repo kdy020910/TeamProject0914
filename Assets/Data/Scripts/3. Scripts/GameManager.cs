@@ -65,8 +65,6 @@ public class GameManager : MonoBehaviour
         {
             talkText.text = talkData.Split(':')[0];
 
-            portraitImg.sprite = talkManager.GetPortrait(id, int.Parse(talkData.Split(':')[1]));
-            portraitImg.color = new(1, 1, 1, 1);
         }
         else
         {

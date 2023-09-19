@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
+  m_Name: Iron
+  m_EditorClassIdentifier: 
+  Value: 0
+  _ID: 0
+  _name: "\uCCA0"
+  Description: "\uBC18\uC9DD\uAC70\uB9AC\uB294 \"\uCCA0\" \uC774\uB2E4."
+  quantity: 0
+  Type: 3
+  Price_Buy: 0
+  Price_Sell: 0
+  Prefab: {fileID: 2788557267888262672, guid: bb67b503cb48ffe4eb0fe943db8a5a1c, type: 3}
+  Icon: {fileID: 1755240878, guid: 5c5d2f1e434dc7147b7baa88a2a74104, type: 3}
+  SeedPrefab: {fileID: 0}
+  GrowingPrefab: {fileID: 0}
+  FullyGrownPrefab: {fileID: 0}
+  weapondata: []

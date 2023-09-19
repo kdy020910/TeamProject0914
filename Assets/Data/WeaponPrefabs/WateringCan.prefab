@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 742696313501574098}
   - component: {fileID: 567537214827418350}
   - component: {fileID: 3892234980711474793}
-  m_Layer: 0
+  - component: {fileID: 8776287584918838862}
+  m_Layer: 8
   m_Name: WateringCan
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -104,7 +105,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.8, z: 0.47953272}
+  m_Size: {x: 0.4, y: 0.8, z: 0.47953272}
   m_Center: {x: 0, y: -0.29811835, z: -0.1021889}
 --- !u!65 &3892234980711474793
 BoxCollider:
@@ -127,3 +128,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.4, z: 0.4795329}
   m_Center: {x: 0, y: -0.29811844, z: -0.10218891}
+--- !u!114 &8776287584918838862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742696313503776018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2a3b296c60f444aa2a1fd66205e3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: e8c046a6d49c47b4189ce2ae80fc91ad, type: 2}

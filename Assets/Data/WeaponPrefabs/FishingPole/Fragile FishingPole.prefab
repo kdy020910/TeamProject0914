@@ -48,9 +48,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1121299370608672323, guid: 9ecc0802559d83644af55388d2b7a576, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 39361976995927352, guid: 9ecc0802559d83644af55388d2b7a576, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ecc0802559d83644af55388d2b7a576, type: 3}
       propertyPath: m_Name
       value: ToolFishingrodWoodSub_Old
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ecc0802559d83644af55388d2b7a576, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5332809968238436118, guid: 9ecc0802559d83644af55388d2b7a576, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827407469219625823, guid: 9ecc0802559d83644af55388d2b7a576, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -110,6 +130,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8376286470223230365, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -8248725094664910038, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.001
@@ -150,6 +174,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -42.577
       objectReference: {fileID: 0}
+    - target: {fileID: -6765326479148255219, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3303840985750142490, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2072182314952434814, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1703740165169838577, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -724453246453827841, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -169903667237464951, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 39361976995927352, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 39361976995927352, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
       propertyPath: m_TagString
       value: Weapon
@@ -159,8 +211,20 @@ PrefabInstance:
       value: Fragile FishingPole
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
       propertyPath: m_TagString
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124675429455985757, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5332809968238436118, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -172,6 +236,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8299964333010533787}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 99836050442099122}
   m_SourcePrefab: {fileID: 100100000, guid: 69113a346c630ba41aeeed3fed222b36, type: 3}
 --- !u!4 &32787389197848654 stripped
 Transform:
@@ -202,5 +269,18 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.35, y: 1.2, z: 0.1}
-  m_Center: {x: 0, y: -0.45, z: 0}
+  m_Size: {x: 0.35, y: 1.2, z: 0.3}
+  m_Center: {x: 0, y: -0.45, z: 0.1}
+--- !u!114 &99836050442099122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925641059151330959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2a3b296c60f444aa2a1fd66205e3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: cb288b9c106a7fc4ea5c5e03dd22253a, type: 2}

@@ -49,16 +49,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8656107280677358535, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8656107280677358535, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
       propertyPath: m_TagString
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 39361976995927352, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
       propertyPath: m_Name
       value: Gold Shovel
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
       propertyPath: m_TagString
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5332809968238436118, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403359669697079729, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67,6 +87,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4390909913236924844}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 875484902535168021}
   m_SourcePrefab: {fileID: 100100000, guid: a2673c641b1ab3941a803de7569cd01a, type: 3}
 --- !u!1 &5846769430265702301 stripped
 GameObject:
@@ -92,5 +115,18 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.7, z: 0.1}
+  m_Size: {x: 0.3, y: 0.8, z: 0.3}
   m_Center: {x: 0, y: -0.1, z: 0}
+--- !u!114 &875484902535168021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5846769430265702301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2a3b296c60f444aa2a1fd66205e3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: d7529fbc8a47cd747b78df02e8e22e22, type: 2}
