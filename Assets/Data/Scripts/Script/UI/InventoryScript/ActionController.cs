@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ActionController : MonoBehaviour
+public class ActionController : SystemProPerty
 {
     [SerializeField] private float range; // ½Àµæ °Å¸®
     private bool pickupActivated = false;
@@ -36,6 +36,7 @@ public class ActionController : MonoBehaviour
     {
         if (pickupActivated)
         {
+            myAnim.SetTrigger("Picking");
             if (hitInfo.transform != null)
             {
                 bool Acquired = TheInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);

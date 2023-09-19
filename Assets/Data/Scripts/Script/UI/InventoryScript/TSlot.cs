@@ -54,7 +54,7 @@ public class TSlot : MonoBehaviour,
         }
 
         // 슬롯에 item 값이 없는 상태라면 슬롯이 갖는 모든 이미지를 비활성화합니다.
-        if (item == null)
+        if (item == null)   
         {
             SetColor(0);
             Go_CountImage.SetActive(false);
@@ -69,9 +69,8 @@ public class TSlot : MonoBehaviour,
     /// <param name="_alpha"></param>
     private void SetColor(float _alpha)
     {
-        //태그를 통해 mountSlot과 trashCan을 예외처리합니다.
-        if (gameObject.tag.GetHashCode() != hashTag_ms
-            && gameObject.tag.GetHashCode() != hashTag_tc)
+        //태그를 통해 trashCan을 예외처리합니다.
+        if (gameObject.tag.GetHashCode() != hashTag_tc)
         {
             Color color = itemImage.color;
             color.a = _alpha;
@@ -260,12 +259,10 @@ public class TSlot : MonoBehaviour,
     {
         Vector3 orgPos = transform.position;
 
-        if (item == null)
+        if (item == null || gameObject.tag.GetHashCode() == hashTag_ms)
             return;
-        else if (gameObject.tag.GetHashCode() == hashTag_ms)
-            return;
-        //if (item != null)
-            //tooltip.ShowTooltip(item, orgPos);
+        if (item != null)
+            tooltip.ShowTooltip(item, orgPos);
     }
 
     /// <summary>

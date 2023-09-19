@@ -30,6 +30,7 @@ public class GuideUI : MonoBehaviour
             ("도움이 필요하신가요?\n" +
             "이것은 시스템 안내 메시지 입니다.\n" +
             "닫으려면 아무 키나 누르세요.");
+
     }
 
     private void Update()

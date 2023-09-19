@@ -30,12 +30,10 @@ public class DIYUIController : SystemProPerty
     public Button diyCraftButton; // DIY 제작 버튼
     public Text craftButtonText; // DIY 제작 버튼 텍스트
 
-    public GameObject craftMessageUI;
-    public Text craftMessage;
 
     private void Awake()
     {
-        craftMessageUI.SetActive(false);
+        
     }
 
     public void OnRecipeSlotClicked(GameObject clickedSlot)
@@ -122,9 +120,7 @@ public class DIYUIController : SystemProPerty
             tinventory.AcquireItem(craftedItem, 1);
 
             OnExitButtonClicked();
-            // 토스트 메시지 출력
-            ShowToastMessage("아이템 " + craftedItem.Name + "을(를) 제작했다!");
-            craftMessageUI.SetActive(false); // 이부분 수정해야함 안되는중
+           
         }
         else
         {
@@ -258,11 +254,5 @@ public class DIYUIController : SystemProPerty
         craftedItem.Icon = recipeData.recipeImage;
 
         return craftedItem;
-    }
-
-    private void ShowToastMessage(string message)
-    {
-         craftMessageUI.SetActive(true);
-         craftMessage.text = message;
     }
 }

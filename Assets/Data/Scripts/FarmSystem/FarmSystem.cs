@@ -51,6 +51,7 @@ public class FarmSystem : SystemProPerty
                 {
                     if (farmField.positionsState[i] == FieldState.ReadyToHarvest)
                     {
+                        harvestUI.SetActive(true);
                         if (Input.GetKeyDown(KeyCode.F))
                         {
                             Harvest(farmField, i);

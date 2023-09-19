@@ -24,9 +24,10 @@ public class PlayerTrigger : AnimationSystem
     public GameObject DiyUI;     // 작업대 상호작용
 
     public GameObject ItemSlot;
-
+    TSlot tslot;
     private void Start()
     {
+        tslot = FindObjectOfType<TSlot>();
         DiyUI.SetActive(false);
     }
 
@@ -89,7 +90,6 @@ public class PlayerTrigger : AnimationSystem
     }
 
     // 도끼 Trigger 관련 코드
-
     private int axeHitCount = 0;
     private const int maxAxeHits = 3; // 최대 칠 수 있는 횟수
     private const float branchDropProbability = 0.8f; // 나뭇가지가 나올 확률
@@ -108,7 +108,7 @@ public class PlayerTrigger : AnimationSystem
         if (equippedWeapon.durability <= 0)
         {
             Debug.Log("앗" + mountingSlot.currentEquippedWeapon + "가(이) 부러졌다!");
-            Destroy(mountingSlot.currentEquippedWeapon.weaponPrefab);
+            tslot.ClearSlot();
         }
         // 내구도를 PlayerPrefs에 저장
         PlayerPrefs.SetInt("EquippedWeaponDurability", equippedWeapon.durability);
