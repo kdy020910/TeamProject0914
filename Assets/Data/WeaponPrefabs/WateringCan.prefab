@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 742696313502671122}
   - component: {fileID: 742696313501574098}
   - component: {fileID: 567537214827418350}
-  - component: {fileID: 3892234980711474793}
   - component: {fileID: 8776287584918838862}
   m_Layer: 8
   m_Name: WateringCan
@@ -101,33 +100,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.8, z: 0.47953272}
-  m_Center: {x: 0, y: -0.29811835, z: -0.1021889}
---- !u!65 &3892234980711474793
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 742696313503776018}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.4, z: 0.4795329}
-  m_Center: {x: 0, y: -0.29811844, z: -0.10218891}
+  m_Size: {x: 0.5, y: 1, z: 0.5}
+  m_Center: {x: 0, y: -0.29811835, z: -0.1021889}
 --- !u!114 &8776287584918838862
 MonoBehaviour:
   m_ObjectHideFlags: 0
