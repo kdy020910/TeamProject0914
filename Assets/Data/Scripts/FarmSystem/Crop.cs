@@ -42,9 +42,9 @@ public class Crop : SystemProPerty
                 ChangeState(CropState.Growing);
             }
         }
-        else 
+        else
         {
-            if(currentState == CropState.Growing)
+            if (currentState == CropState.Growing)
             {
                 elapsedTime += Time.deltaTime;
 

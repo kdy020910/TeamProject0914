@@ -54,6 +54,4 @@ public class Item : ScriptableObject
         public GameObject weaponPrefab;
         public WeaponType weaponType; // 무기 유형
         public int durability; // 현재 무기 내구도
-
     }
-

@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: Pumpkin
   m_EditorClassIdentifier: 
+  Value: 0
   _ID: 0
   _name: Pumpkin
   Description: 
   quantity: 1
-  Type: 0
+  Type: 4
   Price_Buy: 20
   Price_Sell: 10
   Prefab: {fileID: 1646769622031384947, guid: 76944e48f88a4bd4b868396660deb248, type: 3}
   Icon: {fileID: 21300000, guid: 26512479c4821274b82cc7b2178e0d41, type: 3}
+  SeedPrefab: {fileID: 0}
+  GrowingPrefab: {fileID: 0}
+  FullyGrownPrefab: {fileID: 0}
   weapondata: []

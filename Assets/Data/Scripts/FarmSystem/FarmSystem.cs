@@ -1,5 +1,3 @@
-// FarmSystem.cs
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,6 +53,7 @@ public class FarmSystem : SystemProPerty
                         if (Input.GetKeyDown(KeyCode.F))
                         {
                             Harvest(farmField, i);
+                            
                             harvestUI.SetActive(false);
                         }
                     }
@@ -110,7 +109,7 @@ public class FarmSystem : SystemProPerty
 
                     if (selectedSlot != null)
                     {
-                        // 슬롯에 있는 무기 데이터 가져오기
+                        // 슬롯에 있는 아이템데이터 가져오기
                         Item selectedSeedItem = selectedSlot.item;
 
                         if (selectedSeedItem.Type == Item.ItemType.Seed)
@@ -174,8 +173,6 @@ public class FarmSystem : SystemProPerty
         if (farmField.positionsState[positionIndex] == FieldState.ReadyToHarvest)
         {
             harvestUI.SetActive(true);
-            // 여기에서 수확 로직을 구현합니다.
-            // 수확한 아이템을 어딘가에 추가하거나 다른 처리를 수행합니다.
 
             // 아이템 데이터를 가져옵니다. 여기에서는 농작물을 나타내는 Crop 컴포넌트의 plantedSeed를 사용합니다.
             Item harvestedItem = farmField.seedPositions[positionIndex].GetComponent<Crop>().plantedSeed;
@@ -189,6 +186,19 @@ public class FarmSystem : SystemProPerty
                 {
                     // 아이템을 성공적으로 인벤토리에 추가한 경우, 밭의 상태를 빈 상태로 변경합니다.
                     farmField.positionsState[positionIndex] = FieldState.Empty;
+
+                    // FullyGrownPrefab을 삭제합니다.
+                    Destroy(farmField.seedPositions[positionIndex].transform.GetChild(0).gameObject);
+
+                    // 여기서 CropState를 Empty로 변경합니다.
+                    Crop cropComponent = farmField.seedPositions[positionIndex].GetComponent<Crop>();
+                    if (cropComponent != null)
+                    {
+                        cropComponent.ChangeState(CropState.Planted);
+                        crop.plantedSeed = null;
+                        crop.elapsedTime = 0;
+                    }
+                    
                 }
                 else
                 {
@@ -201,4 +211,5 @@ public class FarmSystem : SystemProPerty
             }
         }
     }
+
 }

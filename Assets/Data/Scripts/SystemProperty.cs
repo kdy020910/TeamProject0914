@@ -61,18 +61,18 @@ public class SystemProPerty : MonoBehaviour
         get
         {
             _playerTrigger = FindObjectOfType<PlayerTrigger>();
-            if( _playerTrigger == null)
+            if (_playerTrigger == null)
             {
-                _playerTrigger= GetComponent<PlayerTrigger>();
-                if(playerTrigger == null)
+                _playerTrigger = GetComponent<PlayerTrigger>();
+                if (playerTrigger == null)
                 {
-                    _playerTrigger= GetComponentInChildren<PlayerTrigger>();
+                    _playerTrigger = GetComponentInChildren<PlayerTrigger>();
                 }
             }
             return _playerTrigger;
         }
     }
-    
+
     PondField _pondField = null;
     protected PondField pondField
     {
@@ -107,7 +107,7 @@ public class SystemProPerty : MonoBehaviour
             }
             return _farmField;
         }
-    }   
+    }
     DiyField _diyField = null;
     protected DiyField diyField
     {
@@ -131,7 +131,7 @@ public class SystemProPerty : MonoBehaviour
         get
         {
             _item = FindObjectOfType<Item>();
-            if( _item == null)
+            if (_item == null)
             {
                 _item = GetComponent<Item>();
             }
@@ -139,14 +139,14 @@ public class SystemProPerty : MonoBehaviour
         }
     }
     TInventory _tinventory = null;
-    protected   TInventory tinventory
+    protected TInventory tinventory
     {
         get
         {
             _tinventory = FindObjectOfType<TInventory>();
-            if(_tinventory == null)
+            if (_tinventory == null)
             {
-                _tinventory= GetComponent<TInventory>();
+                _tinventory = GetComponent<TInventory>();
             }
             return _tinventory;
         }
@@ -157,7 +157,7 @@ public class SystemProPerty : MonoBehaviour
         get
         {
             _recipeData = FindObjectOfType<RecipeData>();
-            if(_recipeData == null)
+            if (_recipeData == null)
             {
                 _recipeData = GetComponent<RecipeData>();
             }
@@ -170,11 +170,24 @@ public class SystemProPerty : MonoBehaviour
         get
         {
             _crop = FindObjectOfType<Crop>();
-            if(_crop == null)
+            if (_crop == null)
             {
                 _crop = GetComponent<Crop>();
             }
             return _crop;
+        }
+    }
+    TSlot _slot = null;
+    protected TSlot tslot
+    {
+        get
+        {
+            _slot = FindObjectOfType<TSlot>();
+            if( _slot == null)
+            {
+                _slot = GetComponent<TSlot>();
+            }
+            return _slot;
         }
     }
 }

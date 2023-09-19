@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: Rake
   m_EditorClassIdentifier: 
+  Value: 0
   _ID: 0
   _name: "\uAC08\uD034"
   Description: "\uBC2D\uC744 \uAC08\uC544\uC57C \uC528\uC557\uC744 \uC2EC\uC744 \uC218
@@ -22,8 +23,11 @@ MonoBehaviour:
   Price_Sell: 0
   Prefab: {fileID: 1524981656805470118, guid: 15e126a0391ef6f43b6d85778d7a9e1a, type: 3}
   Icon: {fileID: -1712897255, guid: 781d686f04081ff49ac77a6a9c45424c, type: 3}
+  SeedPrefab: {fileID: 0}
+  GrowingPrefab: {fileID: 0}
+  FullyGrownPrefab: {fileID: 0}
   weapondata:
   - weaponIcon: {fileID: -1712897255, guid: 781d686f04081ff49ac77a6a9c45424c, type: 3}
     weaponPrefab: {fileID: 1524981656805470118, guid: 15e126a0391ef6f43b6d85778d7a9e1a, type: 3}
     weaponType: 2
-    durability: 0
+    durability: 45

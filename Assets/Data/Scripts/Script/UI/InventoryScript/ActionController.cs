@@ -32,7 +32,7 @@ public class ActionController : SystemProPerty
         }
     }
 
-    private void CanPickup()
+    public void CanPickup()
     {
         if (pickupActivated)
         {

@@ -25,8 +25,4 @@ MonoBehaviour:
   SeedPrefab: {fileID: 6671860512069578089, guid: 5b4db619bf3b44641a8375d033cd6dff, type: 3}
   GrowingPrefab: {fileID: 8498059979642780095, guid: 8dffa3a8d9f48824ba21d54ece6f34a4, type: 3}
   FullyGrownPrefab: {fileID: 8498059979642780095, guid: 8dffa3a8d9f48824ba21d54ece6f34a4, type: 3}
-  weapondata:
-  - weaponIcon: {fileID: -507743279, guid: fdffba883ce17c24791dd238729f72e0, type: 3}
-    weaponPrefab: {fileID: 5268286829825406256, guid: 9cefeddfffada134c9e9f6673b968a94, type: 3}
-    weaponType: 15
-    durability: 0
+  weapondata: []

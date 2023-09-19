@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de84e3d80a549b44a7689496d27c0ba, type: 3}
   m_Name: Corn
   m_EditorClassIdentifier: 
+  Value: 0
   _ID: 0
   _name: Corn
   Description: 
   quantity: 1
-  Type: 1
+  Type: 4
   Price_Buy: 20
   Price_Sell: 10
   Prefab: {fileID: 4150164990451215883, guid: 0d6987f6b3e8be246b79b6199de08188, type: 3}
   Icon: {fileID: 21300000, guid: 2116e3c9c55a92547ba57372134970d1, type: 3}
+  SeedPrefab: {fileID: 0}
+  GrowingPrefab: {fileID: 0}
+  FullyGrownPrefab: {fileID: 0}
   weapondata: []

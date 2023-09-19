@@ -9,7 +9,6 @@ public enum WeaponType
     FragileAxe, Axe, GoldAxe, // 도끼 
     FragileFishingPole, FishingPole, // 낚싯대
     FragileShovel, Shovel, GoldShovel, // 삽     
-    Carrot, Potato,Pumpkin, Tomato, Corn
 }
 public class  MountingSlot : AnimationSystem
 {
@@ -27,7 +26,6 @@ public class  MountingSlot : AnimationSystem
     public bool isFishingPoleEquipped = false;
     public bool isRakeEquipped = false;
     public bool isWateringCanEquipped = false;
-    public bool isSeed = false;
 
     public GameObject[] slotBackgrounds; // 각 슬롯 번호에 해당하는 bg 이미지들을 배열로 저장
     public int selectedSlotNumber = -1; // 현재 선택된 슬롯 번호 초기값
@@ -163,13 +161,6 @@ public class  MountingSlot : AnimationSystem
             case WeaponType.WateringCan:
                 isWateringCanEquipped = true;
                 break;
-            case WeaponType.Carrot:
-            case WeaponType.Potato:
-            case WeaponType.Pumpkin:
-            case WeaponType.Tomato:
-            case WeaponType.Corn:     
-                isSeed = true;
-                break;
         }
         // 빈슬롯일때 배열 참조값을리턴시켜야함 (오류가 안나게해야함 (예외처리)) 
     }
@@ -191,7 +182,6 @@ public class  MountingSlot : AnimationSystem
             isShovelEquipped = false;
             isFishingPoleEquipped = false;
             isRakeEquipped = false;
-            isSeed = false;
             // 다른 무기 유형에 대한 설정도 추가
 
             // 애니메이션 파라미터를 초기화합니다.
