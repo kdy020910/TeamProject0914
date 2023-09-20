@@ -25,4 +25,5 @@ MonoBehaviour:
   SeedPrefab: {fileID: 6671860512069578089, guid: 5b4db619bf3b44641a8375d033cd6dff, type: 3}
   GrowingPrefab: {fileID: 8498059979642780095, guid: 8dffa3a8d9f48824ba21d54ece6f34a4, type: 3}
   FullyGrownPrefab: {fileID: 8498059979642780095, guid: 8dffa3a8d9f48824ba21d54ece6f34a4, type: 3}
+  HarvestedIcon: {fileID: 21300000, guid: 2116e3c9c55a92547ba57372134970d1, type: 3}
   weapondata: []

@@ -89,6 +89,7 @@ public class TInventory : MonoBehaviour
                 if (collectionSystem != null && collectionSystem.enabled)
                     collectionSystem.CollectItem(_item);
                 return true;
+               
             }
         }
 

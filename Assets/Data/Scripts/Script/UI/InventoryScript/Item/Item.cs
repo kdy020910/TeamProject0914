@@ -32,6 +32,7 @@ public class Item : ScriptableObject
     [Space(10)]
     [Header("바인딩")]
     public GameObject Prefab;
+    [Header("아이콘")]
     public Sprite Icon;
 
     [Space(10)]
@@ -41,6 +42,8 @@ public class Item : ScriptableObject
     public GameObject GrowingPrefab;
     [Header("다 자란 프리펩")]
     public GameObject FullyGrownPrefab;
+    [Header("수확할때 사용할 아이콘")]
+    public Sprite HarvestedIcon; // 수확할 때 사용할 아이콘
 
     [Space(10)]
     [Header("무기 데이터")]

@@ -16,14 +16,13 @@ public class ActionController : SystemProPerty
     private Text actionText;
 
     public Player player;
-
     private void Update()
     {
         CheckItem();
         TryAction();
     }
 
-    private void TryAction()
+    public void TryAction()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -49,7 +48,7 @@ public class ActionController : SystemProPerty
         }
     }
 
-    private void CheckItem()
+    public void CheckItem()
     {
         Vector3 y = new Vector3(0, 0.3f, 0);
 

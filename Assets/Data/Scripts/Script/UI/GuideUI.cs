@@ -25,12 +25,6 @@ public class GuideUI : MonoBehaviour
         // 거슬린다면 GuideUI.cs의 Start문까지 통째로 지워주세요.
 
         Manager = FindObjectOfType<UIManager>().GetComponent<UIManager>();
-
-        GuideMessage
-            ("도움이 필요하신가요?\n" +
-            "이것은 시스템 안내 메시지 입니다.\n" +
-            "닫으려면 아무 키나 누르세요.");
-
     }
 
     private void Update()

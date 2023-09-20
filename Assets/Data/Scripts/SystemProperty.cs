@@ -190,4 +190,17 @@ public class SystemProPerty : MonoBehaviour
             return _slot;
         }
     }
+    ActionController _actionController = null;
+    protected ActionController actionController
+    {
+        get
+        {
+            _actionController = FindObjectOfType<ActionController>();
+            if( _actionController == null)
+            {
+                _actionController = GetComponent<ActionController>();
+            }
+            return _actionController;
+        }
+    }
 }

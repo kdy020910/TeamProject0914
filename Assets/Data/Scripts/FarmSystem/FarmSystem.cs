@@ -10,7 +10,7 @@ public class FarmSystem : SystemProPerty
     private bool CanPlantSeed = false;
 
     public FarmField[] farmFields; // 밭 정보 배열
-
+    public int positionIndex;
     private void Start()
     {
         CanRakeUI.SetActive(false);
@@ -53,15 +53,12 @@ public class FarmSystem : SystemProPerty
                         if (Input.GetKeyDown(KeyCode.F))
                         {
                             Harvest(farmField, i);
-                            
-                            harvestUI.SetActive(false);
                         }
                     }
                 }
             }
         }
     }
-
 
     // 갈퀴 
     // -내구도-
@@ -81,6 +78,7 @@ public class FarmSystem : SystemProPerty
                         {
                             myAnim.SetTrigger("Raking");
                             farmField.ChangePositionState(i, FieldState.Tilled); // 해당 포지션 갈퀴 상태 변경
+                            CanRakeUI.SetActive(false);
                         }
                         break; // 한 번 갈고 나면 더 이상 갈 수 없도록 종료
                     }
@@ -115,11 +113,11 @@ public class FarmSystem : SystemProPerty
                         if (selectedSeedItem.Type == Item.ItemType.Seed)
                         {
                             // 현재 밭에 심어진 씨앗 개수 체크
-                            if (farmField.plantedSeeds.Count < farmField.maxSeedCount)
+                            if (farmField.plantedSeedsList[i].Count < farmField.maxSeedCount)
                             {
                                 // 씨앗을 심는 작업 수행
                                 farmField.positionsState[i] = FieldState.Planted;
-                                farmField.plantedSeeds.Add(selectedSeedItem);
+                                farmField.plantedSeedsList[i].Add(selectedSeedItem);
                                 Debug.Log("씨앗을 심었습니다: " + selectedSeedItem._name);
 
                                 // 작물에 씨앗 아이템 정보 할당
@@ -130,7 +128,7 @@ public class FarmSystem : SystemProPerty
                                 }
 
                                 // 다음에 심을 위치를 계산
-                                int positionIndex = farmField.plantedSeeds.Count - 1;
+                                positionIndex = farmField.plantedSeedsList[i].Count - 1;
                                 if (positionIndex < farmField.seedPositions.Length)
                                 {
                                     // 해당 위치에 씨앗을 배치
@@ -167,7 +165,7 @@ public class FarmSystem : SystemProPerty
             Debug.LogWarning("밭이 존재하지 않거나 갈린 상태가 아닙니다.");
         }
     }
-
+    // 수확했을때 호출될 함수 
     private void Harvest(FarmField farmField, int positionIndex)
     {
         if (farmField.positionsState[positionIndex] == FieldState.ReadyToHarvest)
@@ -179,26 +177,30 @@ public class FarmSystem : SystemProPerty
 
             if (harvestedItem != null)
             {
+                // 아이템 아이콘을 수확할 때 사용할 아이콘으로 변경
+                harvestedItem.Icon = harvestedItem.HarvestedIcon;
                 // 인벤토리에 아이템을 추가합니다. AcquireItem 메서드를 사용할 수 있다고 가정합니다.
                 bool acquired = tinventory.AcquireItem(harvestedItem);
 
                 if (acquired)
                 {
-                    // 아이템을 성공적으로 인벤토리에 추가한 경우, 밭의 상태를 빈 상태로 변경합니다.
+                    // 아이템을 성공적으로 인벤토리에 추가한 경우, 해당 포지션의 씨앗 정보 초기화
                     farmField.positionsState[positionIndex] = FieldState.Empty;
 
                     // FullyGrownPrefab을 삭제합니다.
                     Destroy(farmField.seedPositions[positionIndex].transform.GetChild(0).gameObject);
 
-                    // 여기서 CropState를 Empty로 변경합니다.
+                    // 해당 포지션의 씨앗 목록 초기화
+                    farmField.plantedSeedsList[positionIndex].Clear();
+
+                    // CropState를 처음 상태로 변경합니다.
                     Crop cropComponent = farmField.seedPositions[positionIndex].GetComponent<Crop>();
                     if (cropComponent != null)
                     {
                         cropComponent.ChangeState(CropState.Planted);
-                        crop.plantedSeed = null;
-                        crop.elapsedTime = 0;
+                        cropComponent.plantedSeed = null;
+                        cropComponent.elapsedTime = 0f;
                     }
-                    
                 }
                 else
                 {
@@ -211,5 +213,4 @@ public class FarmSystem : SystemProPerty
             }
         }
     }
-
 }
